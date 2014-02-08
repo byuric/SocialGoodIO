@@ -17,6 +17,7 @@ block content
     for project in projects
         li#projectListing
             ul
+                li #{project.id}
                 li #{project.name}
                 li #{project.location}
                 li #{project.description}
