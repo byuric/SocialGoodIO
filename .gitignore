@@ -6,9 +6,9 @@ lib-cov
 *.out
 *.pid
 *.gz
-
+.idea
 pids
 logs
 results
-
+.idea/*
 npm-debug.log
