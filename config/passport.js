@@ -47,9 +47,9 @@ passport.use(new FacebookStrategy(secrets.facebook, function(req, accessToken, r
         User.findById(req.user.id, function(err, user) {
           user.facebook = profile.id;
           user.tokens.push({ kind: 'facebook', accessToken: accessToken });
-          user.profile.name = user.profile.name || profile.displayName;
-          user.profile.gender = user.profile.gender || profile._json.gender;
-          user.profile.picture = user.profile.picture || 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
+          user.name = user.name || profile.displayName;
+          user.gender = user.gender || profile._json.gender;
+          user.picture = user.picture || 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
           user.save(function(err) {
             req.flash('info', { msg: 'Facebook account has been linked.' });
             done(err, user);
@@ -65,10 +65,10 @@ passport.use(new FacebookStrategy(secrets.facebook, function(req, accessToken, r
       user.email = profile._json.email;
       user.facebook = profile.id;
       user.tokens.push({ kind: 'facebook', accessToken: accessToken });
-      user.profile.name = profile.displayName;
-      user.profile.gender = profile._json.gender;
-      user.profile.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
-      user.profile.location = (profile._json.location) ? profile._json.location.name : '';
+      user.name = profile.displayName;
+      user.gender = profile._json.gender;
+      user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
+      user.zipcode = (profile._json.zipcode) ? profile._json.zipcode : '';
       user.save(function(err) {
         done(err, user);
       });
@@ -90,10 +90,10 @@ passport.use(new GitHubStrategy(secrets.github, function(req, accessToken, refre
         User.findById(req.user.id, function(err, user) {
           user.github = profile.id;
           user.tokens.push({ kind: 'github', accessToken: accessToken });
-          user.profile.name = user.profile.name || profile.displayName;
-          user.profile.picture = user.profile.picture || profile._json.avatar_url;
-          user.profile.location = user.profile.location || profile._json.location;
-          user.profile.website = user.profile.website || profile._json.blog;
+          user.name = user.profile.name || profile.displayName;
+          user.picture = user.profile.picture || profile._json.avatar_url;
+          user.location = user.profile.location || profile._json.location;
+          user.website = user.profile.website || profile._json.blog;
           user.save(function(err) {
             req.flash('info', { msg: 'GitHub account has been linked.' });
             done(err, user);

@@ -5,7 +5,7 @@ exports.getProfile = function(req, res) {
     if (!error) {
       return res.render('profile/profile', {
         title: user.name,
-        profile: user
+        user: user
       });
     } else {
       return console.log(error);

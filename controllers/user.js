@@ -107,7 +107,7 @@ exports.postSignup = function(req, res, next) {
       zipcode: req.body.zipcode,
       phone: req.body.phone,
       gender: req.body.gender,
-      availability: req.body.gender
+      availability: req.body.availability
   });
 
   user.save(function(err) {
@@ -152,7 +152,7 @@ exports.postUpdateProfile = function(req, res, next) {
     user.interests = req.body.interests || '';
     user.zipcode = req.body.zipcode || '';
     user.phone = req.body.phone || '';
-    user.availabilty = req.body.availabilty || '';
+    user.availabilty = req.body.availabilty || 'yes';
 
     user.save(function(err) {
       if (err) return next(err);
@@ -199,7 +199,8 @@ exports.postUpdatePassword = function(req, res, next) {
  */
 
 exports.postDeleteAccount = function(req, res, next) {
-  User.remove({ _id: req.user.id }, function(err) {
+    console.log('Yuri Delete'+req.user.id);
+    User.remove({ _id: req.user.id }, function(err) {
     if (err) return next(err);
     req.logout();
     res.redirect('/');
