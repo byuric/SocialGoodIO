@@ -1,0 +1,31 @@
+﻿#projectList{
+    width:100%;
+    margin-bottom:20px;
+    overflow:hidden;
+    border-top:1px solid #ccc;
+    
+
+    li{
+        line-height:1.5em;
+        border-bottom:1px solid #ccc;
+        list-style:none;
+      
+        -moz-column-count: 3;
+        -moz-column-gap: 10px;
+        -webkit-column-count: 3;
+        -webkit-column-gap: 10px;
+        column-count: 3;
+        column-gap: 10px;
+        width: 480px;
+
+
+        &>ul li {
+            line-height:1.5em;
+            border-bottom:1px solid #ccc;
+            float:left;
+            padding:0 3px 0 3px;
+            display:inline;
+        }
+
+    }
+}
