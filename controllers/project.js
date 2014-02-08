@@ -1,67 +1,54 @@
 var Project = require('../models/Project');
 
-/**
- * GET /project/new
- * Project form page.
- */
-
 exports.getNewProject = function(req, res) {
-  res.render('project/new', {
-    title: 'Project'
+  res.render('projects/new', {
+    title: 'Create a new Project'
   });
 };
 
-/**
- * POST /project/new
- * Store project
- * @param name
- * @param description
- * @param location
- */
-
-exports.postNewProject = function(req, res) {
+exports.postCreateProject = function(req, res) {
   req.assert('name', 'Name cannot be blank').notEmpty();
   req.assert('description', 'Description cannot be blank').notEmpty();
   req.assert('location', 'Location cannot be blank').notEmpty();
 
   var errors = req.validationErrors();
 
-  console.log('Store Project')
-
   if (errors) {
+    console.log('ProjectsController: Validation errors: ' + errors);
     req.flash('errors', errors);
-    return res.redirect('/project');
+    return res.redirect('/projects/new');
   }
 
-  var name = req.body.name;
-  var description = req.body.description;
-  var location = req.body.location;
+  var project;
+  console.log("POST: ");
+  console.log(req.body);
 
-  var project = new Project({
-        name: req.body.name,
-        description: req.body.description,
-        location: req.body.location
+  project = new Project({
+    name: req.body.name,
+    description: req.body.description,
+    location: req.body.location
   });
 
-    project.save(function(err) {
-        if (err) {
-            if (err.code === 11000) {
-                req.flash('errors', { msg: 'Project with this id already exist.' });
-            }
-            return res.redirect('/project');
-        }
-        res.redirect('/project');
-    });
+  project.save(function(error) {
+    if (!error) {
+      console.log('ProjectsController: Created project with ID: ' + project._id);
+    } else {
+      console.log('ProjectsController: Error creating project: ' + error);
+      if (error.code === 11000) {
+        req.flash('errors', { msg: 'ProjectsController: ' + project._id + '  already exists!' });
+      }
+    }
+  });
 
+  return res.redirect('/projects/' + project._id);
 };
 
-/**
- * GET /project
- * Project page.
- */
-
 exports.getProject = function(req, res) {
-    res.render('project/project', {
-        title: 'Account Management'
-    });
+  return Project.findById(req.params.id, function (error, project) {
+    if (!error) {
+      return res.render('projects/project', {project: project});
+    } else {
+      return console.log(error);
+    }
+  });
 };

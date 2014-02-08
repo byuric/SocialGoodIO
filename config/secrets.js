@@ -1,7 +1,7 @@
 var mongoUri = process.env.MONGOLAB_URI || 'localhost';
 
-var facebookAppId = process.env.FACEBOOK_APP_ID || '486085941511001';
-var facebookSecret = process.env.FACEBOOK_SECRET || '9bda0e7448ae18e7d473c2eea27ff114';
+var facebookAppId = process.env.FACEBOOK_APP_ID || '667136463344002';
+var facebookSecret = process.env.FACEBOOK_SECRET || '27c13028f8302e3584667d1bcca4df54';
 
 module.exports = {
 

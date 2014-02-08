@@ -1,12 +1,14 @@
 extends ../layout
+
 block content
     .page-header
-        h3 Project
-    form.form-horizontal(id='new-project', method='POST')
+        h3 New Project
+
+    form.form-horizontal(id='new-project', method='POST', action='/projects')
         .form-group
             label(class='col-sm-2 control-label', for='name') Name
             .col-sm-8
-                input.form-control(type='name', name='name', id='name')
+                input.form-control(type='name', name='name', id='name', autofocus=true)
         .form-group
             label(class='col-sm-2 control-label', for='description') Description
             .col-sm-8
@@ -21,4 +23,4 @@ block content
             .col-sm-offset-2.col-sm-8
                 button.btn.btn-default(type='submit')
                     i.fa.fa-check
-                        | Update
+                        | Create

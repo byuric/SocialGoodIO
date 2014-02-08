@@ -112,10 +112,9 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 /**
  * Routes for project creation, update
  */
-app.get('/project/new', projectController.getNewProject);
-app.post('/project/new', projectController.postNewProject);
-app.get('/project', projectController.getProject);
-
+app.get('/projects/new', projectController.getNewProject);
+app.post('/projects', projectController.postCreateProject);
+app.get('/projects/:id', projectController.getProject);
 
 /**
  * OAuth routes for sign-in.
@@ -126,7 +125,6 @@ app.get('/auth/google', passport.authenticate('google', { scope: 'profile email'
 app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/login' }));
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/login' }));
-
 
 app.get('/contact', contactController.getContact);
 app.post('/contact', contactController.postContact);
