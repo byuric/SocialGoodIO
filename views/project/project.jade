@@ -13,3 +13,15 @@ block content
   .row
     div.col-md-2 Description:
     div.col-md-10 #{project.description}
+  .row
+    div.col-md-2 Location:
+    div.col-md-10 #{project.location}
+  .row
+    div.col-md-2 Duration(start - end date):
+    div.col-md-10 #{project.startDate.toDateString()} - #{project.endDate.toDateString()}
+  .row
+    div.col-md-2 Total hours needed:
+    div.col-md-10 #{project.totalHoursNeeded}
+  .row
+      div.col-md-2 Total dollars needed:
+      div.col-md-10 #{project.totalDollarsNeeded} 

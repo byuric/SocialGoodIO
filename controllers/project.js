@@ -22,7 +22,12 @@ exports.postCreateProject = function(req, res) {
   var project = new Project({
     name: req.body.name,
     description: req.body.description,
-    location: req.body.location
+    location: req.body.location,
+    startDate: new Date(req.body.startDate),
+    endDate: new Date(req.body.endDate),
+    status: req.body.status,
+    totalHoursNeeded: req.body.totalHoursNeeded,
+    totalDollarsNeeded: req.body.totalDollarsNeeded
   });
 
   project.save(function(error) {

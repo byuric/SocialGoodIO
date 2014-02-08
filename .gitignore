@@ -12,7 +12,7 @@ logs
 results
 build
 .grunt
-.idea/*
+.idea/**
 .idea/
 npm-debug.log
 node_modules
