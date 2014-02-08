@@ -112,9 +112,9 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 /**
  * Routes for project creation, update
  */
-app.get('/projects/new', projectController.getNewProject);
-app.post('/projects', projectController.postCreateProject);
-app.get('/projects/:id', projectController.getProject);
+app.get('/project/new', projectController.getNewProject);
+app.post('/project', projectController.postCreateProject);
+app.get('/project/:id', projectController.getProject);
 
 /**
  * OAuth routes for sign-in.
