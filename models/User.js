@@ -9,13 +9,13 @@ var userSchema = new mongoose.Schema({
   facebook: { type: String, unique: true, sparse: true },
   twitter: { type: String, unique: true, sparse: true },
   google: { type: String, unique: true, sparse: true },
-  github: { type: String, unique: true, sparse: true },
   tokens: Array,
 
   profile: {
     name: { type: String, default: '' },
     gender: { type: String, default: '' },
     location: { type: String, default: '' },
+    phone: { type: String, default: '' },
     website: { type: String, default: '' },
     picture: { type: String, default: '' }
   }
