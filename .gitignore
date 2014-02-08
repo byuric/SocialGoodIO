@@ -11,4 +11,5 @@ pids
 logs
 results
 .idea/*
+.idea/
 npm-debug.log

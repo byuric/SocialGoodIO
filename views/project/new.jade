@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+    .page-header
+        h3 New Project
+
+    form.form-horizontal(id='new-project', method='POST')
+        .form-group
+            label(class='col-sm-2 control-label', for='name') Name
+            .col-sm-8
+                input.form-control(type='name', name='name', id='name', autofocus=true)
+        .form-group
+            label(class='col-sm-2 control-label', for='description') Description
+            .col-sm-8
+                input.form-control(type='text', name='description', id='description')
+        .form-group
+            label(class='col-sm-2 control-label', for='location') Location
+            .col-sm-8
+                textarea.form-control(type='text', name='location', id='location', rows='7')
+        .form-group
+            input.form-control(type='hidden', name='_csrf', value=token)
+        .form-group
+            .col-sm-offset-2.col-sm-8
+                button.btn.btn-default(type='submit')
+                    i.fa.fa-check
+                        | Create
