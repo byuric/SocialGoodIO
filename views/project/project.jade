@@ -1,4 +1,15 @@
 extends ../layout
+
 block content
-    .page-header
-        h3 Project !{JSON.stringify(project)}
+  .page-header
+    // ToDo: Buttons should be conditional base on the viewer
+    a(href='https://maps.google.com/?q=' + project.location, target='_blank', class='btn btn-primary pull-right') Join Project
+    a(href='#', class='btn btn-primary pull-right') Edit
+    h3 #{project.name}
+  .row
+    div.col-md-2 Location:
+    div.col-md-10
+      a(href='https://maps.google.com/?q=' + project.location, target='_blank') #{project.location}
+  .row
+    div.col-md-2 Description:
+    div.col-md-10 #{project.description}
