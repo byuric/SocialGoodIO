@@ -74,11 +74,20 @@ exports.getSignup = function(req, res) {
  * Create a new local account.
  * @param email
  * @param password
+ * @param name
+ * @param country
+ * @param zipcode
+ * @param phone
+ * @param interests
+ * @param age
+ * @param gender
+ * @param availability
  */
 
 exports.postSignup = function(req, res, next) {
   req.assert('email', 'Email is not valid').isEmail();
   req.assert('password', 'Password must be at least 4 characters long').len(4);
+  req.assert('age', 'Age must be bigger than 14 years').number;
   req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
 
   var errors = req.validationErrors();
@@ -89,8 +98,16 @@ exports.postSignup = function(req, res, next) {
   }
 
   var user = new User({
-    email: req.body.email,
-    password: req.body.password
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      country: req.body.country,
+      age: req.body.age,
+      interests: req.body.interests,
+      zipcode: req.body.zipcode,
+      phone: req.body.phone,
+      gender: req.body.gender,
+      availability: req.body.gender
   });
 
   user.save(function(err) {
@@ -98,7 +115,7 @@ exports.postSignup = function(req, res, next) {
       if (err.code === 11000) {
         req.flash('errors', { msg: 'User with that email already exists.' });
       }
-      return res.redirect('/signup');
+      return res.redirect('/signup'); //TBD should return back to the same form without deleting values
     }
     req.logIn(user, function(err) {
       if (err) return next(err);
@@ -127,10 +144,15 @@ exports.postUpdateProfile = function(req, res, next) {
   User.findById(req.user.id, function(err, user) {
     if (err) return next(err);
     user.email = req.body.email || '';
-    user.profile.name = req.body.name || '';
-    user.profile.gender = req.body.gender || '';
-    user.profile.location = req.body.location || '';
-    user.profile.website = req.body.website || '';
+    user.name = req.body.name || '';
+    user.gender = req.body.gender || '';
+    user.location = req.body.location || '';
+    user.country = req.body.country || '';
+    user.age = req.body.age || '';
+    user.interests = req.body.interests || '';
+    user.zipcode = req.body.zipcode || '';
+    user.phone = req.body.phone || '';
+    user.availabilty = req.body.availabilty || '';
 
     user.save(function(err) {
       if (err) return next(err);

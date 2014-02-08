@@ -3,22 +3,21 @@ var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 
 var userSchema = new mongoose.Schema({
-  email: { type: String, unique: true },
-  password: String,
-
-  facebook: { type: String, unique: true, sparse: true },
-  twitter: { type: String, unique: true, sparse: true },
-  google: { type: String, unique: true, sparse: true },
-  tokens: Array,
-
-  profile: {
+    email: { type: String, unique: true },
+    password: String,
     name: { type: String, default: '' },
-    gender: { type: String, default: '' },
-    location: { type: String, default: '' },
+    country: { type: String, default: '' },
+    zipcode: { type: String, default: '' },
     phone: { type: String, default: '' },
-    website: { type: String, default: '' },
-    picture: { type: String, default: '' }
-  }
+    interests: { type: String, default: '' },
+    age: { type: String, default: '' },
+    gender: { type: String, default: '' },
+    availability: { type: String, default: '' },
+    picture: { type: String, default: '' },
+    facebook: { type: String, unique: true, sparse: true },
+    twitter: { type: String, unique: true, sparse: true },
+    google: { type: String, unique: true, sparse: true },
+    tokens: Array
 });
 
 /**
