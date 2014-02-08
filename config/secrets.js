@@ -1,5 +1,7 @@
+var mongoUri = process.env.MONGOLAB_URI || 'localhost';
+
 module.exports = {
-  db: 'localhost',
+  db: mongoUri,
 
   sessionSecret: "Your Session Secret goes here",
 
@@ -44,7 +46,7 @@ module.exports = {
     callbackURL: '/auth/google/callback',
     passReqToCallback: true
   },
-  
+
   steam: {
     apiKey: 'Your Steam API Key'
   },
