@@ -4,6 +4,10 @@ block content
   form.form-horizontal(id='signup-form', method='POST')
     legend Signup
     .form-group
+        label.col-sm-3.control-label(for='name') Name
+        .col-sm-7
+            input.form-control(type='name', name='name', id='name', placeholder='Name', autofocus)
+    .form-group
       label.col-sm-3.control-label(for='email') Email
       .col-sm-7
         input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus)
