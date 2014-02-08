@@ -1,6 +1,10 @@
 var mongoUri = process.env.MONGOLAB_URI || 'localhost';
 
+var facebookAppId = process.env.FACEBOOK_APP_ID || '667136463344002';
+var facebookSecret = process.env.FACEBOOK_SECRET || '27c13028f8302e3584667d1bcca4df54';
+
 module.exports = {
+
   db: mongoUri,
 
   sessionSecret: "Your Session Secret goes here",
@@ -20,8 +24,8 @@ module.exports = {
   },
 
   facebook: {
-    clientID: 'Your App ID',
-    clientSecret: 'Your App Secret',
+    clientID: facebookAppId,
+    clientSecret: facebookSecret,
     callbackURL: '/auth/facebook/callback',
     passReqToCallback: true
   },

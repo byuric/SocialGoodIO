@@ -8,23 +8,33 @@ SocialGood I/O is an Exchange Platform for Social Good where:
 * Winners (up to N winners) will be picked randomly based on their SocialGood credit they contributed towards the challange that will be called "Winner"
 * The chances of winning in the challange depend on the SocialGood credit that the contributor put in to the challange
 * SocialGood I/O will make sure that "Provider" delivers the offered prizes to all the "Winner"s
-* Challange will be active from 7 to 30 days. 
+* Challange will be active from 7 to 30 days.
 
 How to SocialGood Credits are calculated?
-* When Contributor shares the challange to his Social Network timeline e.g. FB => SocialGood credits = number of friends that this Contributor has. 
-* If Contributor shared to more than one network, his SocialGood contribution will be the aggregate of all the potential friends and followers who could see the promotion of the Challange. 
+* When Contributor shares the challange to his Social Network timeline e.g. FB => SocialGood credits = number of friends that this Contributor has.
+* If Contributor shared to more than one network, his SocialGood contribution will be the aggregate of all the potential friends and followers who could see the promotion of the Challange.
 * If Contributor A friends shared the Challange to their network as a result of SocialGood sharing, Contributor A and B will get points.
 * Contributor can share the challange only once a day. All the contributions will be aggregated toward single SocialGood credit that is provided for select Challange.
 * SocialGood credits can be bought with real money $1 = 1000 SocialGood credits
-* Contributor will be reminded before the end of the Challange with a list of top Contributors and his winning chances (Probability). Contributor will be able to buy SocialGood credits at any point of time before the end of the challange. 
+* Contributor will be reminded before the end of the Challange with a list of top Contributors and his winning chances (Probability). Contributor will be able to buy SocialGood credits at any point of time before the end of the challange.
 
 SocialGood Fund:
-All the credits collected from all the SocialGood challanges will be collected towards SocialGood Fund that will support Social Entrepreneurs and Social Good projects around the world. 
+All the credits collected from all the SocialGood challanges will be collected towards SocialGood Fund that will support Social Entrepreneurs and Social Good projects around the world.
 Fund Size $$$ = Total SocialGood Credits/1000
 
-Let's Change the world to a better place. 
+Let's Change the world to a better place.
 
 Want to join as a contributor towards www.SocialGood.io please send an email to info@startupmonthly.org with a title "SocialGood"
+
+<hr />
+
+Heroku
+======
+
+Required:
+
+heroku config:set FACEBOOK_APP_ID
+heroku config:set FACEBOOK_SECRET
 
 <hr />
 
@@ -386,7 +396,7 @@ As the message says, you need to have a MongoDB server running before launching 
 ### I get an error when I deploy my app, why?
 Chances are you haven't changed the *Dabatase URI* in `secrets.js`. If `db` is set to `localhost`, it will only work
 on your machine as long as MongoDB is running. When you deploy to Heroku, OpenShift or some other provider, you will not have MongoDB
-running on `localhost`. You need to create an account with [MongoLab](http://mongolab.com) or [MongoHQ](http://mongohq.com), then create a free tier database. See **Deployment** (coming soon) section for more information on how to 
+running on `localhost`. You need to create an account with [MongoLab](http://mongolab.com) or [MongoHQ](http://mongohq.com), then create a free tier database. See **Deployment** (coming soon) section for more information on how to
 setup an account and a new database step-by-step with MongoLab.
 
 ### Why Jade instead of Handlebars template engine?

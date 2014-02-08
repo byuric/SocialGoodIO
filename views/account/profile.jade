@@ -56,7 +56,7 @@ block content
       .col-sm-4
         input.form-control(type='password', name='confirmPassword', id='confirmPassword')
     .form-group
-        input.form-control(type='hidden', name='_csrf', value=token) 
+        input.form-control(type='hidden', name='_csrf', value=token)
     .form-group
       .col-sm-offset-3.col-sm-4
         button.btn.btn.btn-primary(type='submit')
@@ -78,7 +78,8 @@ block content
   if user.google
     p: a.text-danger(href='/account/unlink/google') Unlink your Google account
   else
-    p: a(href='/auth/google') Link your Google account
+    //
+      p: a(href='/auth/google') Link your Google account
 
   if user.facebook
     p: a.text-danger(href='/account/unlink/facebook') Unlink your Facebook account
@@ -88,9 +89,11 @@ block content
   if user.twitter
     p: a.text-danger(href='/account/unlink/twitter') Unlink your Twitter account
   else
-    p: a(href='/auth/twitter') Link your Twitter account
+    //
+      p: a(href='/auth/twitter') Link your Twitter account
 
   if user.github
     p: a.text-danger(href='/account/unlink/github') Unlink your GitHub account
   else
-    p: a(href='/auth/github') Link your GitHub account
+    //
+      p: a(href='/auth/github') Link your GitHub account
