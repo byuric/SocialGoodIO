@@ -12,6 +12,23 @@ block content
       .col-sm-7
         input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus)
     .form-group
+       label.col-sm-3.control-label(for='Zip Code') Zip Code
+       .col-sm-7
+            input.form-control(type='zipcode', name='zipcode', id='zipcode', placeholder='Zip Code', autofocus)
+    .form-group
+        label.col-sm-3.control-label(for='Zip Code') Interests
+        .col-sm-7
+            input.form-control(type='interests', name='interests', id='interests', placeholder='Animals, Fundraising...', autofocus)
+    .form-group
+        label.col-sm-3.control-label(for='gender') Gender
+        .col-sm-4
+            label.radio
+                input(type='radio', checked='true', name='gender', value='male', data-toggle='radio')
+                span Male
+            label.radio
+                input(type='radio', name='gender', value='female', data-toggle='radio')
+                span Female
+    .form-group
       label.col-sm-3.control-label(for='password') Password
       .col-sm-7
         input.form-control(type='password', name='password', id='password', placeholder='Password')
