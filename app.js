@@ -16,6 +16,7 @@ var expressValidator = require('express-validator');
 
 var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
+var profileController = require('./controllers/profile');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
 var projectController = require('./controllers/project');
@@ -110,11 +111,16 @@ app.post('/account/delete', passportConf.isAuthenticated, userController.postDel
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
 
 /**
- * Routes for project creation, update
+ * Project
  */
 app.get('/project/new', projectController.getNewProject);
 app.post('/project', projectController.postCreateProject);
 app.get('/project/:id', projectController.getProject);
+
+/**
+ * User
+ */
+app.get('/profile/:id', profileController.getProfile);
 
 /**
  * OAuth routes for sign-in.

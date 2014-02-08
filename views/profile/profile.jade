@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  .page-header
+    a(href='#', class='btn btn-primary pull-right') Edit
+    h3 #{profile.name}
+
+  if profile.location
+    .row
+      div.col-md-2 Location:
+      div.col-md-10
+        a(href='https://maps.google.com/?q=' + profile.location, target='_blank') #{profile.location}
+
+  if profile.website
+    .row
+      div.col-md-2 Website:
+      div.col-md-10
+        a(href=profile.website, target='_blank') #{profile.website}
