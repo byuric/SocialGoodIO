@@ -10,6 +10,9 @@ lib-cov
 pids
 logs
 results
+build
+.grunt
 .idea/*
 .idea/
 npm-debug.log
+node_modules
