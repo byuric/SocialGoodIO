@@ -1,57 +1,71 @@
 extends ../layout
 
 block content
-  form.form-horizontal(id='signup-form', method='POST')
-    legend Signup
-    .form-group
-        label.col-sm-3.control-label(for='name') Name
-        .col-sm-7
-            input.form-control(type='name', name='name', id='name', placeholder='Name', autofocus)
-    .form-group
-      label.col-sm-3.control-label(for='email') Email
-      .col-sm-7
-        input.form-control(type='email', name='email', id='email', placeholder='Email')
-    .form-group
-        label.col-sm-3.control-label(for='country') Country
-        .col-sm-7
-            input.form-control(type='country', name='country', id='country', placeholder='Country')
-    .form-group
-       label.col-sm-3.control-label(for='Zip Code') Zip Code
-       .col-sm-7
-            input.form-control(type='zipcode', name='zipcode', id='zipcode', placeholder='Zip Code')
-    .form-group
-        label.col-sm-3.control-label(for='phone') Phone
-        .col-sm-7
-            input.form-control(type='phone', name='phone', id='phone', placeholder='Phone')
-    .form-group
-        label.col-sm-3.control-label(for='interests') Interests
-        .col-sm-7
-            input.form-control(type='interests', name='interests', id='interests', placeholder='Animals, Fundraising...')
-    .form-group
-        label.col-sm-3.control-label(for='age') Age
-        .col-sm-7
-            input.form-control(type='age', name='age', id='age', placeholder='Age 14+')
-    .form-group
-        label.col-sm-3.control-label(for='gender') Gender
-        .col-sm-4
-            label.radio
-                input(type='radio', checked='true', name='gender', value='male', data-toggle='radio')
-                span Male
-            label.radio
-                input(type='radio', name='gender', value='female', data-toggle='radio')
-                span Female
-    .form-group
-      label.col-sm-3.control-label(for='password') Password
-      .col-sm-7
-        input.form-control(type='password', name='password', id='password', placeholder='Password')
-    .form-group
-      label.col-sm-3.control-label(for='confirmPassword') Confirm Password
-      .col-sm-7
-        input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password')
-    .form-group
-        input.form-control(type='hidden', name='_csrf', value=token) 
-    .form-group
-      .col-sm-offset-3.col-sm-7
-        button.btn.btn-success(type='submit')
-          i.fa.fa-check
-          | Signup
+  .col-sm-8.col-sm-offset-2
+      form.form-horizontal(id='signup-form', method='POST')
+        legend Signup
+        .form-group
+            .col-sm-6
+            .btn-group
+                a.btn.btn-facebook(href='/auth/facebook')
+                    i.fa.fa-facebook
+                    | Facebook
+                a.btn.btn-twitter(href='/auth/twitter')
+                    i.fa.fa-twitter
+                    | Twitter
+                a.btn.btn-google-plus(href='/auth/google')
+                    i.fa.fa-google-plus
+                    | Google
+        hr
+        .form-group
+            label.col-sm-3.control-label(for='name') Name
+            .col-sm-7
+                input.form-control(type='name', name='name', id='name', placeholder='Name', autofocus)
+        .form-group
+          label.col-sm-3.control-label(for='email') Email
+          .col-sm-7
+            input.form-control(type='email', name='email', id='email', placeholder='Email')
+        .form-group
+            label.col-sm-3.control-label(for='country') Country
+            .col-sm-7
+                input.form-control(type='country', name='country', id='country', placeholder='Country')
+        .form-group
+           label.col-sm-3.control-label(for='Zip Code') Zip Code
+           .col-sm-7
+                input.form-control(type='zipcode', name='zipcode', id='zipcode', placeholder='Zip Code')
+        .form-group
+            label.col-sm-3.control-label(for='phone') Phone
+            .col-sm-7
+                input.form-control(type='phone', name='phone', id='phone', placeholder='Phone')
+        .form-group
+            label.col-sm-3.control-label(for='interests') Interests
+            .col-sm-7
+                input.form-control(type='interests', name='interests', id='interests', placeholder='Animals, Fundraising...')
+        .form-group
+            label.col-sm-3.control-label(for='age') Age
+            .col-sm-7
+                input.form-control(type='age', name='age', id='age', placeholder='Age 14+')
+        .form-group
+            label.col-sm-3.control-label(for='gender') Gender
+            .col-sm-4
+                label.radio
+                    input(type='radio', checked='true', name='gender', value='male', data-toggle='radio')
+                    span Male
+                label.radio
+                    input(type='radio', name='gender', value='female', data-toggle='radio')
+                    span Female
+        .form-group
+          label.col-sm-3.control-label(for='password') Password
+          .col-sm-7
+            input.form-control(type='password', name='password', id='password', placeholder='Password')
+        .form-group
+          label.col-sm-3.control-label(for='confirmPassword') Confirm Password
+          .col-sm-7
+            input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password')
+        .form-group
+            input.form-control(type='hidden', name='_csrf', value=token)
+        .form-group
+          .col-sm-offset-3.col-sm-7
+            button.btn.btn-success(type='submit')
+              i.fa.fa-check
+              | Signup
