@@ -3,8 +3,16 @@ extends ../layout
 block content
   .page-header
     // ToDo: Buttons should be conditional based on the viewer
-    a(href='/project/'+project._id+'/join', class='btn btn-primary pull-right') Join Project
-    a(href='https://maps.google.com/?q=' + project.location, target='_blank', class='btn btn-primary pull-right') Edit
+    if !userIsMember
+      if user._id+"" != project.owner._id+""
+        a(href='/project/'+project._id+'/join', class='btn btn-primary pull-right') Join Project
+      else
+        a(href='/project/'+project._id+'/delete', onclick="alert('not implemented');", class='btn btn-danger pull-right') Delete Project
+    else
+      a(href='/project/'+project._id+'/leave', class='btn btn-warning pull-right') Leave Project
+    a(href='/project/'+project._id+'/join', title='Owners of projects shouldnt ever "Join" their own projects, so they normally wouldnt see this option.  It is here for testing only',class='btn btn-primary pull-right') dev-hack Join Project
+    if user._id+"" == project.owner._id+""
+      a(href='https://maps.google.com/?q=' + project.location, target='_blank', class='btn btn-primary pull-right') Edit
     h3 #{project.name}
   .row
     div.col-md-2 Location:
@@ -29,10 +37,11 @@ block content
   hr
   div.members
     h3="Current Members"
-    if project.members.length>0 && project.members[0].picture != null
-      ul
-        for each member in project.members
-          li
-            div.memberCard
-              div.avatar
-                img(src=member.picture)
+    if project.members.length>0 && project.members[0].user != null
+      ul.members__list
+        for member in project.members
+          if member.user
+            li.members__item
+              div.memberCard
+                a.memberCard__link(href='#')
+                  img.memberCard__avatar(class='js-projectMember-avatar',src=member.user.picture, height='30', data-toggle='tooltip', data-placement='bottom', title='#{member.user.name}')

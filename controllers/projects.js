@@ -9,13 +9,23 @@ var User= require('../models/User');
 
 exports.getProjects = function (req, res) {
  
-  Project.find().exec(function (err, projects) {
-    if (err) return next(err);
-        res.render('projects/projectList', {
+  Project.find().populate('owner members').exec(function (err, projects) {
+
+    if (!err) {
+      User.populate(projects, { path: 'members.user' }, function (err, data) {
+        if (!err) {
+          res.render('projects/projectList', {
             title: 'Project list',
             projects: projects
-        });
-    });
+          });
+        }
+        else { console.log(err) }
+      });
+     
+    } else {
+      return console.log(error);
+    }
+  });
 
 };
 
