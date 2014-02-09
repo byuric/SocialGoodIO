@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'), ObjectId = mongoose.Schema.Types.ObjectId;
 var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 
@@ -17,7 +17,8 @@ var userSchema = new mongoose.Schema({
     facebook: { type: String, unique: true, sparse: true },
     twitter: { type: String, unique: true, sparse: true },
     google: { type: String, unique: true, sparse: true },
-    tokens: Array
+    tokens: Array,
+    projects: {type: ObjectId, ref:'ProjectMember'}
 });
 
 /**

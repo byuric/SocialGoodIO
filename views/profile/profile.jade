@@ -2,17 +2,38 @@ extends ../layout
 
 block content
   .page-header
-    a(href='#', class='btn btn-primary pull-right') Edit
-    h3 #{user.name}
+    //a(href='#', class='btn btn-primary pull-right') Edit
 
-  if user.zipcode && user.country
-    .row
-      div.col-md-2 Location:
-      div.col-md-10
-        a(href='https://maps.google.com/?q=' + user.country +' ' + user.zipcode, target='_blank') #{user.country} #{user.zipcode}
+    div.profile
+        img(src='#{user.picture}', height='50px')
+        h4.name
+            span #{user.name}
+        div.location='Location'
+            p #{user.country}
+        hr
 
-  if user.gender
-    .row
-      div.col-md-2 Website:
-      div.col-md-10
-        label #{user.gender}
+    h1 Projects
+    for project in projects
+        div.project-card
+            h3.title
+                a(href='/project/'+project.id)
+                    span=project.name
+            div.description
+                p=project.description
+            div.members
+                img(src='/img/unknownUser.png', height='25px')
+            //-
+              if project.members != null && project.members.length > 0
+              for each member in project.members
+                li
+                img(src="#{member.user.profile.picture}", class='profile', width='100', height='100')
+            div.summary
+                div.membercount
+                    div=project.members.length
+                    div=(project.members.length>1) ? 'Members':'Lonely Member'
+                div.stats
+                    div=(project.members.length*8).toFixed(2)+'%'
+                    div='Funded'
+                div.value
+                    div='$'+(project.totalDollarsNeeded?project.totalDollarsNeeded:0).toFixed(2)
+                    div='Total Value'
