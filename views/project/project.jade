@@ -2,23 +2,14 @@ extends ../layout
 
 block content
   .page-header
-    // ToDo: Buttons should be conditional based on the viewer
     if !userIsMember
       if user
-        if user._id+"" != project.owner._id+""
-          a(href='/project/'+project._id+'/join', class='btn btn-primary pull-right') Join Project
-        else
+        if isOwner
           a(href='/project/'+project._id+'/delete', onclick="alert('not implemented');", class='btn btn-danger pull-right') Delete Project
+        else
+          a(href='/project/'+project._id+'/join', class='btn btn-primary pull-right') Join Project
     else
       a(href='/project/'+project._id+'/leave', class='btn btn-warning pull-right') Leave Project
-    
-    
-    //- following two lines are for development purposes only.
-    if user
-      a(href='/project/'+project._id+'/join', title='Owners of projects shouldnt ever "Join" their own projects, so they normally wouldnt see this option.  It is here for testing only',class='btn btn-primary pull-right') dev-hack Join Project
-    
-    
-    
     if user
       if user._id+"" == project.owner._id+""
         a(href='https://maps.google.com/?q=' + project.location, target='_blank', class='btn btn-primary pull-right') Edit
@@ -44,13 +35,18 @@ block content
       div.col-md-10 #{project.totalEstimatedBudget}
 
   hr
+
   div.members
-    h3="Current Members"
-    if project.members.length>0 && project.members[0].user != null
+    h3 Current Members
       ul.members__list
-        for member in project.members
-          if member.user
-            li.members__item
-              div.memberCard
-                a.memberCard__link(href='#')
-                  img.memberCard__avatar(class='js-projectMember-avatar',src=member.user.picture, height='30', data-toggle='tooltip', data-placement='bottom', title='#{member.user.name}')
+        li.members__item
+          div.memberCard
+            a.memberCard__link(href='/profile/' + project.owner._id)
+              img.memberCard__avatar(class='js-projectMember-avatar',src=project.owner.picture, height='30', data-toggle='tooltip', data-placement='bottom', title='#{project.owner.name}')
+        if project.members.length>0 && project.members[0].user != null
+          for member in project.members
+            if member.user
+              li.members__item
+                div.memberCard
+                  a.memberCard__link(href='/profile/' + member.user._id)
+                    img.memberCard__avatar(class='js-projectMember-avatar',src=member.user.picture, height='30', data-toggle='tooltip', data-placement='bottom', title='#{member.user.name}')

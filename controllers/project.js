@@ -8,8 +8,8 @@ exports.getNewProject = function(req, res) {
     title: 'Start a new Project'
   });
 };
-exports.joinProject = function (req, res) {
 
+exports.joinProject = function (req, res) {
   Project.findById(req.params.id).populate('members').exec(function (err, project) {
     if (!err) {
       User.populate(project, { path: 'members.user' }, function (err, data) {
@@ -45,6 +45,7 @@ exports.joinProject = function (req, res) {
     }
   });
 }
+
 exports.leaveProject = function (req, res) {
   return Project.findById(req.params.id).populate('members').exec(function (error, project) {
     if (!error) {
@@ -77,9 +78,7 @@ exports.leaveProject = function (req, res) {
       return console.log(error);
     }
   });
-
 }
-
 
 exports.postCreateProject = function(req, res) {
   req.assert('name', 'Name cannot be blank').notEmpty();
@@ -133,6 +132,7 @@ exports.getProject = function(req, res) {
           return res.render('project/project', {
             title: project.name,
             project: project,
+            isOwner: req.user._id.equals(project.owner._id),
             userIsMember: alreadyJoined
           });
         } else {
