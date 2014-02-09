@@ -3,11 +3,12 @@ var projectSchema = new mongoose.Schema({
     name: { type: String, default: '' },
     description: { type: String, default: '' },
     location: { type: String, default: '' },
+    creationDate: { type: Date, required: false },
     startDate: { type: Date, required: false },
     endDate: { type: Date, required: false },
-    status: { type: String, default: 'Planning' }, //options: Planning, In Progress, Finished
+    status: { type: String, default: 'New' }, //options: New, In Progress, Completed
     totalHoursNeeded: { type: Number },
-    totalDollarsNeeded: { type: Number }, //refactor for multi-currency?
+    totalBudgetNeeded: { type: Number }, //refactor for multi-currency?
     owner: {type: ObjectId, ref:'User'},
     members: [{ type: ObjectId, ref: 'ProjectMember' }]
 });

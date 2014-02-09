@@ -3,16 +3,16 @@ extends ../layout
 block content
   .page-header
     a(href='#', class='btn btn-primary pull-right') Edit
-    h3 #{profile.name}
+    h3 #{user.name}
 
-  if profile.location
+  if user.zipcode && user.country
     .row
       div.col-md-2 Location:
       div.col-md-10
-        a(href='https://maps.google.com/?q=' + profile.location, target='_blank') #{profile.location}
+        a(href='https://maps.google.com/?q=' + user.country +' ' + user.zipcode, target='_blank') #{user.country} #{user.zipcode}
 
-  if profile.website
+  if user.gender
     .row
       div.col-md-2 Website:
       div.col-md-10
-        a(href=profile.website, target='_blank') #{profile.website}
+        label #{user.gender}
