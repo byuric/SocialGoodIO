@@ -19,8 +19,12 @@ exports.joinProject = function (req, res) {
             alreadyJoined = alreadyJoined ? alreadyJoined : "" + project.members[i].user._id == "" + req.user._id;
           }
           if (!alreadyJoined) {
-            var projectMember = new ProjectMember({ user: req.user.id, role: 'Follower' });
+            var projectMember = new ProjectMember({ user: req.user.id, project:req.params.id,  role: 'Follower' });
             projectMember.save();
+            req.user.projects.push(projectMember);
+            req.user.save(function (err) {
+                if (err) return handleError(err);
+            });
 
             project.members.push(projectMember);
             project.save(function (err) {

@@ -13,27 +13,31 @@ block content
         hr
 
     h1 Projects
-    for project in projects
-        div.project-card
-            h3.title
-                a(href='/project/'+project.id)
-                    span=project.name
-            div.description
-                p=project.description
-            div.members
-                img(src='/img/unknownUser.png', height='25px')
-            //-
-              if project.members != null && project.members.length > 0
-              for each member in project.members
-                li
-                img(src="#{member.user.profile.picture}", class='profile', width='100', height='100')
-            div.summary
-                div.membercount
-                    div=project.members.length
-                    div=(project.members.length>1) ? 'Members':'Lonely Member'
-                div.stats
-                    div=(project.members.length*8).toFixed(2)+'%'
-                    div='Funded'
-                div.value
-                    div='$'+(project.totalDollarsNeeded?project.totalDollarsNeeded:0).toFixed(2)
-                    div='Total Value'
+    for p in projects
+      div.project-card
+          h3.title
+              a(href='/project/'+p.project.id)
+                  span=p.project.name
+          div.description
+              p=p.project.description
+          div.members
+              if p.project.members.length>0 && p.project.members[0].user != null
+                  each val in [0, 1, 2, 3, 4, 5]
+                      if(p.project.members[val])
+                          img(src="#{p.project.members[val].user.picture}", class='profile', width='30', height='30')
+                  if p.project.members.length>6
+                      |...
+          div.summary
+              div.membercount
+                  if p.project.members.length>0
+                      div=p.project.members.length + ((p.project.members.length>1) ? ' Members':' Lonely Member')
+                  else
+                      div='No followers yet.'
+              div.stats
+                  div
+                      //- (project.members.length*8).toFixed(2)+'%'
+                  div
+                      //- 'Funded'
+              div.value
+                  div='$'+(p.project.totalEstimatedBudget?p.project.totalEstimatedBudget:0).toFixed(2)
+                  div='Total Value'
