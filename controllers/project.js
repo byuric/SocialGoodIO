@@ -126,9 +126,11 @@ exports.getProject = function(req, res) {
       User.populate(project, { path: 'members.user' }, function (err, data) {
         if (!err) {
           var alreadyJoined = false;
-          for (var i = 0; i < project.members.length; i++) {
-            alreadyJoined = alreadyJoined ? alreadyJoined : "" + project.members[i].user._id == "" + req.user._id;
-          }
+            if(req.user){
+              for (var i = 0; i < project.members.length; i++) {
+                alreadyJoined = alreadyJoined ? alreadyJoined : "" + project.members[i].user._id == "" + req.user._id;
+              }
+            }
           return res.render('project/project', {
             title: project.name,
             project: project,
