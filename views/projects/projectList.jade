@@ -10,11 +10,9 @@ block content
       div.description
           p=project.description
       div.members
-        img(src='/img/unknownUser.png', height='25px')
-      if project.members.length>0 && project.members[0].picture != null
-        for each member in project.members
-          li
-          img(src="#{member.user.profile.picture}", class='profile', width='100', height='100')
+      if project.members.length>0 && project.members[0].user != null
+        for member in project.members
+          img(src="#{member.user.picture}", class='profile', width='30', height='30')
       div.summary
         div.membercount
           div=project.members.length

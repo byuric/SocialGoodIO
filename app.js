@@ -120,6 +120,7 @@ app.get('/project/new',passportConf.isAuthenticated, projectController.getNewPro
 app.post('/project', projectController.postCreateProject);
 app.get('/project/:id', projectController.getProject);
 app.get('/project/:id/join', projectController.joinProject)
+app.get('/project/:id/leave', projectController.leaveProject)
 
 /**
  * Projects

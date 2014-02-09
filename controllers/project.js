@@ -1,6 +1,7 @@
 var Project = require('../models/Project');
 var User = require('../models/User');
 var ProjectMember = require('../models/ProjectMember');
+var mongoose = require('mongoose'), ObjectId = mongoose.Schema.Types.ObjectId;
 
 exports.getNewProject = function(req, res) {
   res.render('project/new', {
@@ -8,33 +9,78 @@ exports.getNewProject = function(req, res) {
   });
 };
 exports.joinProject = function (req, res) {
-  req.assert('user', 'User is not logged in').notEmpty();
-  //User.findById(req.user._id, function (err, user) {
-  //  console.log(user);
-  //});
-  //return res.send('donefinding users');
-  Project.findById(req.params.id, function (err, project) {
+
+  Project.findById(req.params.id).populate('members').exec(function (err, project) {
     if (!err) {
-      var alreadyJoined = false;
-      for (var i = 0; i < project.members.length; i++) {
-        alreadyJoined = alreadyJoined | project.members[i] == req.user._id;
-      }
-      if (!alreadyJoined){
-      project.members.push(new ProjectMember({ user: req.user._id, role: 'Follower' }));
-      project.save(function (err) {
-        if (err) return handleError(err);
-        return res.redirect('/project/' + project._id);
+      User.populate(project, { path: 'members.user' }, function (err, data) {
+        if (!err) {
+          var alreadyJoined = false;
+          for (var i = 0; i < project.members.length; i++) {
+            alreadyJoined = alreadyJoined ? alreadyJoined : "" + project.members[i].user._id == "" + req.user._id;
+          }
+          if (!alreadyJoined) {
+            var projectMember = new ProjectMember({ user: req.user.id, role: 'Follower' });
+            projectMember.save();
+
+            project.members.push(projectMember);
+            project.save(function (err) {
+              if (err) return handleError(err);
+              return res.redirect('/project/' + project.id);
+            });
+          }
+          else {
+            console.log('already Joined');
+            return res.redirect('/project/' + project.id);
+          }
+
+        }
+        else {
+          console.log('already Joined');
+          return res.redirect('/project/' + project.id);
+        }
       });
-      }
-      else {
-        return res.redirect('/project/' + project._id);
-      }
     }
     else {
       return console.log(error);
     }
   });
 }
+exports.leaveProject = function (req, res) {
+  return Project.findById(req.params.id).populate('members').exec(function (error, project) {
+    if (!error) {
+      User.populate(project, { path: 'members.user' }, function (err, data) {
+        if (!err) {
+          //find the projectMember for this user
+          var pmIndex;
+          for (var i = 0; i < project.members.length; i++) {
+            if("" + project.members[i].user._id == "" + req.user._id){
+              pmIndex = i;
+              break;
+            }
+          }
+          //delete it from the db
+          ProjectMember.findById(project.members[pmIndex]._id).remove();
+
+          //pop it from the array
+          project.members.splice(pmIndex,1);
+          
+          //save the project
+          project.save(function(err){
+            if(!err) return res.redirect('/project/' + project.id);
+            else return console.log(err);
+          });
+        }
+        else { console.log(err) }
+      });
+     
+    } else {
+      return console.log(error);
+    }
+  });
+
+}
+
+
 exports.postCreateProject = function(req, res) {
   req.assert('name', 'Name cannot be blank').notEmpty();
   req.assert('description', 'Description cannot be blank').notEmpty();
@@ -75,21 +121,24 @@ exports.postCreateProject = function(req, res) {
 };
 
 exports.getProject = function(req, res) {
-  return Project.findById(req.params.id).populate('owner').exec( function (error, project) {
-    if (!error) {
-      console.log(project);
-      
-      var alreadyJoined = false;
-      for (var i = 0; i < project.members.length; i++) {
-        alreadyJoined = alreadyJoined | project.members[i]._id == req.user._id;
-      }
-      
-      
-      return res.render('project/project', {
-        title: project.name,
-        project: project,
-        userIsMember: alreadyJoined
-      });
+return Project.findById(req.params.id).lean().populate('owner members').exec(function (error, project) {
+  if (!error) {
+   User.populate(project, { path: 'members.user' }, function (err, data) {
+     if (!err) {
+       var alreadyJoined = false;
+       for (var i = 0; i < project.members.length; i++) {
+         alreadyJoined = alreadyJoined ? alreadyJoined : "" + project.members[i].user._id == "" + req.user._id;
+       }
+
+       return res.render('project/project', {
+         title: project.name,
+         project: project,
+         userIsMember: alreadyJoined
+       });
+     }
+     else { console.log(err) }
+   });
+     
     } else {
       return console.log(error);
     }
