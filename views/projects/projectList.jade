@@ -1,0 +1,28 @@
+﻿extends /layout
+
+block content
+  h1 Active Projects
+  for project in projects
+    div.project-card
+      h3.title
+        a(href='/project/'+project.id)
+          span=project.name
+      div.description
+          p=project.description
+      div.members
+        img(src='/img/unknownUser.png', height='25px')
+      //-
+        if project.members != null && project.members.length > 0
+        for each member in project.members
+          li
+          img(src="#{member.user.profile.picture}", class='profile', width='100', height='100')
+      div.summary
+        div.membercount
+          div=project.members.length
+          div=(project.members.length>1) ? 'Members':'Lonely Member'
+        div.stats
+          div=(project.members.length*8).toFixed(2)+'%'
+          div='Funded'
+        div.value
+          div='$'+(project.totalDollarsNeeded?project.totalDollarsNeeded:0).toFixed(2)
+          div='Total Value'

@@ -7,7 +7,8 @@ block content
     br
     | Let's make our world a better place!!!
 
-  h1 Projects
-  for project in projects
-    include partials/projectTile
-
+  if user
+    .alert.alert-success.animated.flipInX
+      i.fa.fa-check
+      strong Success!
+      |  You are logged in.

@@ -20,6 +20,7 @@ var profileController = require('./controllers/profile');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
 var projectController = require('./controllers/project');
+var projectsController = require('./controllers/projects');
 
 /**
  * API keys + Passport configuration.
@@ -54,6 +55,8 @@ var month = (day * 30);
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
+app.locals.basedir = app.get('views');
+//app.set('view options', { basedir: process.env.__dirname });  //allow absolute paths in includes.
 app.set('view engine', 'jade');
 app.use(require('connect-assets')({
   src: 'public',
@@ -116,6 +119,13 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 app.get('/project/new',passportConf.isAuthenticated, projectController.getNewProject);
 app.post('/project', projectController.postCreateProject);
 app.get('/project/:id', projectController.getProject);
+
+/**
+ * Projects
+ */
+app.get('/projects', projectsController.getProjects);
+app.post('/projects/search/', projectsController.findProjects);
+
 
 /**
  * User
