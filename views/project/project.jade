@@ -17,11 +17,11 @@ block content
     div.col-md-2 Location:
     div.col-md-10 #{project.location}
   .row
-    div.col-md-2 Duration(start - end date):
+    div.col-md-2 Duration(Start date - End date):
     div.col-md-10 #{project.startDate.toDateString()} - #{project.endDate.toDateString()}
   .row
-    div.col-md-2 Total hours needed:
-    div.col-md-10 #{project.totalHoursNeeded}
+    div.col-md-2 Total hours planned:
+    div.col-md-10 #{project.totalHoursPlanned}
   .row
-      div.col-md-2 Total dollars needed:
-      div.col-md-10 #{project.totalDollarsNeeded} 
+      div.col-md-2 Total esdtimated budget:
+      div.col-md-10 #{project.totalEstimatedBudget}
