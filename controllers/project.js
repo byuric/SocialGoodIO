@@ -121,7 +121,7 @@ exports.postCreateProject = function(req, res) {
 };
 
 exports.getProject = function(req, res) {
-  return Project.findById(req.params.id).lean().populate('owner members').exec(function (error, project) {
+  return Project.findById(req.params.id).lean().populate('owner').populate('members').exec(function (error, project) {
     if (!error) {
       console.log(project.members);
       User.populate(project, { path: 'members.user' }, function (err, data) {
