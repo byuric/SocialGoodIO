@@ -9,25 +9,25 @@ exports.getNewProject = function(req, res) {
 };
 exports.joinProject = function (req, res) {
   req.assert('user', 'User is not logged in').notEmpty();
-  //User.findById(req.user._id, function (err, user) {
-  //  console.log(user);
-  //});
-  //return res.send('donefinding users');
   Project.findById(req.params.id, function (err, project) {
+    console.log('Project ID'+req.params.id);
     if (!err) {
       var alreadyJoined = false;
       for (var i = 0; i < project.members.length; i++) {
-        alreadyJoined = alreadyJoined | project.members[i] == req.user._id;
+          console.log("User in members:" + project.members[i]+ ' User:'+req.user.id)
+          alreadyJoined = alreadyJoined | project.members[i].user == req.user.id;
       }
       if (!alreadyJoined){
-      project.members.push(new ProjectMember({ user: req.user._id, role: 'Follower' }));
-      project.save(function (err) {
-        if (err) return handleError(err);
-        return res.redirect('/project/' + project._id);
-      });
+          var projectMember = new ProjectMember({ user: req.user.id, role: 'Follower' });
+          projectMember.save();
+          project.members.push(projectMember);
+          project.save(function (err) {
+            if (err) return handleError(err);
+            return res.redirect('/project/' + project.id);
+          });
       }
       else {
-        return res.redirect('/project/' + project._id);
+        return res.redirect('/project/' + project.id);
       }
     }
     else {
@@ -35,6 +35,8 @@ exports.joinProject = function (req, res) {
     }
   });
 }
+
+
 exports.postCreateProject = function(req, res) {
   req.assert('name', 'Name cannot be blank').notEmpty();
   req.assert('description', 'Description cannot be blank').notEmpty();
