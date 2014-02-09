@@ -6,12 +6,16 @@
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/') SocialGood.io
+      img(src='/img/logo.png', height='40px')
+      //a.navbar-brand(href='/', title='SocialGood.io') SocialGood.io
+
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li(class=title=='Home'?'active':undefined)
+        li(class=title=='SocialGood.io'?'active':undefined)
+          a(href='/') SocialGood.io
+        li(class=title=='Projects'?'active':undefined)
           a(href='/projects') Projects
-        li(class=title=='API Browser'?'active':undefined)
+        li(class=title=='Create Project'?'active':undefined)
           a(href='/project/new') Create Project
         li(class=title=='Contact'?'active':undefined)
           a(href='/contact') Contact
