@@ -119,6 +119,7 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 app.get('/project/new',passportConf.isAuthenticated, projectController.getNewProject);
 app.post('/project', projectController.postCreateProject);
 app.get('/project/:id', projectController.getProject);
+app.get('/project/:id/join', projectController.joinProject)
 
 /**
  * Projects

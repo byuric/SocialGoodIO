@@ -11,8 +11,7 @@ block content
           p=project.description
       div.members
         img(src='/img/unknownUser.png', height='25px')
-      //-
-        if project.members != null && project.members.length > 0
+      if project.members.length>0 && project.members[0].picture != null
         for each member in project.members
           li
           img(src="#{member.user.profile.picture}", class='profile', width='100', height='100')
@@ -21,8 +20,10 @@ block content
           div=project.members.length
           div=(project.members.length>1) ? 'Members':'Lonely Member'
         div.stats
-          div=(project.members.length*8).toFixed(2)+'%'
-          div='Funded'
+          div 
+            //- (project.members.length*8).toFixed(2)+'%'
+          div 
+            //- 'Funded'
         div.value
-          div='$'+(project.totalDollarsNeeded?project.totalDollarsNeeded:0).toFixed(2)
+          div='$'+(project.totalEstimatedBudget?project.totalEstimatedBudget:0).toFixed(2)
           div='Total Value'

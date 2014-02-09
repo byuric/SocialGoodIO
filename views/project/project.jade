@@ -3,8 +3,8 @@ extends ../layout
 block content
   .page-header
     // ToDo: Buttons should be conditional based on the viewer
-    a(href='https://maps.google.com/?q=' + project.location, target='_blank', class='btn btn-primary pull-right') Join Project
-    a(href='#', class='btn btn-primary pull-right') Edit
+    a(href='/project/'+project._id+'/join', class='btn btn-primary pull-right') Join Project
+    a(href='https://maps.google.com/?q=' + project.location, target='_blank', class='btn btn-primary pull-right') Edit
     h3 #{project.name}
   .row
     div.col-md-2 Location:
@@ -25,3 +25,14 @@ block content
   .row
       div.col-md-2 Total esdtimated budget:
       div.col-md-10 #{project.totalEstimatedBudget}
+
+  hr
+  div.members
+    h3="Current Members"
+    if project.members.length>0 && project.members[0].picture != null
+      ul
+        for each member in project.members
+          li
+            div.memberCard
+              div.avatar
+                img(src=member.picture)

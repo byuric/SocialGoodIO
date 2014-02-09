@@ -1,11 +1,40 @@
 var Project = require('../models/Project');
+var User = require('../models/User');
+var ProjectMember = require('../models/ProjectMember');
 
 exports.getNewProject = function(req, res) {
   res.render('project/new', {
     title: 'Start a new Project'
   });
 };
-
+exports.joinProject = function (req, res) {
+  req.assert('user', 'User is not logged in').notEmpty();
+  //User.findById(req.user._id, function (err, user) {
+  //  console.log(user);
+  //});
+  //return res.send('donefinding users');
+  Project.findById(req.params.id, function (err, project) {
+    if (!err) {
+      var alreadyJoined = false;
+      for (var i = 0; i < project.members.length; i++) {
+        alreadyJoined = alreadyJoined | project.members[i] == req.user._id;
+      }
+      if (!alreadyJoined){
+      project.members.push(new ProjectMember({ user: req.user._id, role: 'Follower' }));
+      project.save(function (err) {
+        if (err) return handleError(err);
+        return res.redirect('/project/' + project._id);
+      });
+      }
+      else {
+        return res.redirect('/project/' + project._id);
+      }
+    }
+    else {
+      return console.log(error);
+    }
+  });
+}
 exports.postCreateProject = function(req, res) {
   req.assert('name', 'Name cannot be blank').notEmpty();
   req.assert('description', 'Description cannot be blank').notEmpty();
@@ -26,8 +55,9 @@ exports.postCreateProject = function(req, res) {
     startDate: new Date(req.body.startDate),
     endDate: new Date(req.body.endDate),
     status: req.body.status,
-    totalHoursNeeded: req.body.totalHoursNeeded,
-    totalDollarsNeeded: req.body.totalDollarsNeeded
+    totalHoursPlanned: req.body.totalHoursPlanned,
+    totalEstimatedBudget: req.body.totalEstimatedBudget,
+    owner: req.user._id
   });
 
   project.save(function(error) {
@@ -45,11 +75,20 @@ exports.postCreateProject = function(req, res) {
 };
 
 exports.getProject = function(req, res) {
-  return Project.findById(req.params.id, function (error, project) {
+  return Project.findById(req.params.id).populate('owner').exec( function (error, project) {
     if (!error) {
+      console.log(project);
+      
+      var alreadyJoined = false;
+      for (var i = 0; i < project.members.length; i++) {
+        alreadyJoined = alreadyJoined | project.members[i]._id == req.user._id;
+      }
+      
+      
       return res.render('project/project', {
         title: project.name,
-        project: project
+        project: project,
+        userIsMember: alreadyJoined
       });
     } else {
       return console.log(error);

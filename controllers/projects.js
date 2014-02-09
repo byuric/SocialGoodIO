@@ -1,4 +1,6 @@
 ﻿var Project = require('../models/Project');
+var ProjectMember = require('../models/ProjectMember');
+var User= require('../models/User');
 
 /**
  * GET /
@@ -6,10 +8,11 @@
  */
 
 exports.getProjects = function (req, res) {
-    Project.find().exec(function (err, projects) {
-        if (err) return next(err);
+ 
+  Project.find().exec(function (err, projects) {
+    if (err) return next(err);
         res.render('projects/projectList', {
-            title: 'SocialGood - Project list',
+            title: 'Project list',
             projects: projects
         });
     });
