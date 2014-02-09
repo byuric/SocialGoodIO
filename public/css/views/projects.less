@@ -15,6 +15,9 @@
     h3.title {
         padding:0 20px 10px 20px;
         margin: 20px 0 10px 0;
+        height:80px;
+        overflow:hidden;
+        text-overflow:ellipsis;
         a {
             span {
                 color:#659b36;
@@ -23,13 +26,15 @@
     }
 
     div.description {
-        margin-bottom:10px;
+        margin-bottom:30px; //10px when turned back on.
         p {
+
             color:#8a92a5;
             height:50px;
             overflow:hidden;
             word-wrap:break-word;
-            display:block;
+            text-overflow:ellipsis;
+            display:none; //display:block;
             margin:0 20px 0 20px;
             background:-webkit-gradient(linear,right top,left top,from(#fff),to(rgba(255,255,255,.1)));
         }
