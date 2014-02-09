@@ -63,7 +63,7 @@ exports.leaveProject = function (req, res) {
 
           //pop it from the array
           project.members.splice(pmIndex,1);
-          
+
           //save the project
           project.save(function(err){
             if(!err) return res.redirect('/project/' + project.id);
@@ -72,7 +72,7 @@ exports.leaveProject = function (req, res) {
         }
         else { console.log(err) }
       });
-     
+
     } else {
       return console.log(error);
     }
@@ -121,24 +121,24 @@ exports.postCreateProject = function(req, res) {
 };
 
 exports.getProject = function(req, res) {
-return Project.findById(req.params.id).lean().populate('owner members').exec(function (error, project) {
-  if (!error) {
-   User.populate(project, { path: 'members.user' }, function (err, data) {
-     if (!err) {
-       var alreadyJoined = false;
-       for (var i = 0; i < project.members.length; i++) {
-         alreadyJoined = alreadyJoined ? alreadyJoined : "" + project.members[i].user._id == "" + req.user._id;
-       }
-
-       return res.render('project/project', {
-         title: project.name,
-         project: project,
-         userIsMember: alreadyJoined
-       });
-     }
-     else { console.log(err) }
-   });
-     
+  return Project.findById(req.params.id).lean().populate('owner').populate('members').exec(function (error, project) {
+    if (!error) {
+      console.log(project.members);
+      User.populate(project, { path: 'members.user' }, function (err, data) {
+        if (!err) {
+          var alreadyJoined = false;
+          for (var i = 0; i < project.members.length; i++) {
+            alreadyJoined = alreadyJoined ? alreadyJoined : "" + project.members[i].user._id == "" + req.user._id;
+          }
+          return res.render('project/project', {
+            title: project.name,
+            project: project,
+            userIsMember: alreadyJoined
+          });
+        } else {
+          console.log(err);
+        }
+      });
     } else {
       return console.log(error);
     }

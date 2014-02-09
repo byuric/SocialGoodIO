@@ -31,6 +31,9 @@
     "paypal-rest-sdk": "~0.6.4",
     "connect-mongo": "~0.4.0",
     "twilio": "~1.5.0",
-    "logfmt": "~0.20.0"
+    "logfmt": "~0.20.0",
+    "zombie": "~2.0.0-alpha27",
+    "jasmine-node": "~1.13.1",
+    "coffee-script": "~1.7.1"
   }
 }
