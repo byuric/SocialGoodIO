@@ -7,8 +7,8 @@ var projectSchema = new mongoose.Schema({
     startDate: { type: Date, required: false },
     endDate: { type: Date, required: false },
     status: { type: String, default: 'New' }, //options: New, In Progress, Completed
-    totalHoursNeeded: { type: Number },
-    totalBudgetNeeded: { type: Number }, //refactor for multi-currency?
+    totalHoursPlanned: { type: Number },
+    totalEstimatedBudget: { type: Number }, //refactor for multi-currency?
     owner: {type: ObjectId, ref:'User'},
     members: [{ type: ObjectId, ref: 'ProjectMember' }]
 });
