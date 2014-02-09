@@ -38,11 +38,10 @@ block content
   div.members
     h3="Current Members"
     if project.members.length>0 && project.members[0].user != null
-      ul
+      ul.members__list
         for member in project.members
           if member.user
-            li
+            li.members__item
               div.memberCard
-                div.avatar
-                  img(src=member.user.picture, height='30')
-                  div #{member.user.name}
+                a.memberCard__link(href='#')
+                  img.memberCard__avatar(class='js-projectMember-avatar',src=member.user.picture, height='30', data-toggle='tooltip', data-placement='bottom', title='#{member.user.name}')
