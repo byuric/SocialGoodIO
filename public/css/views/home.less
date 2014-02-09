@@ -1,31 +1,97 @@
-﻿#projectList{
-    width:100%;
-    margin-bottom:20px;
-    overflow:hidden;
-    border-top:1px solid #ccc;
-    
+﻿div.project-card {
+    font-family:adelle,Georgia,"Times New Roman",Times,serif;
+    line-height:1.4;
+    color: #555;
+    font-size:14px;
+    border:1px solid #d1d1cf;
+    display:block;
+    border-radius:5px;
+    box-shadow:0 0 0 rgba(0,0,0,0);
+    width:300px;
+    float:left;
+    margin:8px;
 
-    li{
-        line-height:1.5em;
-        border-bottom:1px solid #ccc;
-        list-style:none;
-      
-        -moz-column-count: 3;
-        -moz-column-gap: 10px;
-        -webkit-column-count: 3;
-        -webkit-column-gap: 10px;
-        column-count: 3;
-        column-gap: 10px;
-        width: 480px;
+    h3.title {
+        padding:0 20px 10px 20px;
+        margin: 20px 0 10px 0;
+        a {
+            span {
+                color:#659b36;
+            }
+        }
+    }
 
+    div.description {
+        margin-bottom:10px;
+        p {
+            color:#8a92a5;
+            height:40px;
+            overflow:hidden;
+            word-wrap:break-word;
+            display:block;
+            margin:0 20px 0 20px;
+            background:-webkit-gradient(linear,right top,left top,from(#fff),to(rgba(255,255,255,.1)));
+        }
+    }
 
-        &>ul li {
-            line-height:1.5em;
-            border-bottom:1px solid #ccc;
-            float:left;
-            padding:0 3px 0 3px;
-            display:inline;
+    div.members{
+        padding:0 20px 3px 20px;
+    }
+
+    div.summary {
+        background-color:#fafafa;
+        border-top:1px solid #e8e8e8;
+        > div{float:left;
+            width:33.3%;
+            text-align:center;
+            padding:12px 3px 12px 3px;
+        }
+        div.stats {
+           
         }
 
+        div.membercount {
+            span {
+
+            }
+        }
+
+        div.value {
+         
+            content:"$1000";
+        }
     }
 }
+
+
+
+
+        #projectList {
+            width: 100%;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-top: 1px solid #ccc;
+
+
+            li {
+                line-height: 1.5em;
+                border-bottom: 1px solid #ccc;
+                list-style: none;
+                -moz-column-count: 3;
+                -moz-column-gap: 10px;
+                -webkit-column-count: 3;
+                -webkit-column-gap: 10px;
+                column-count: 3;
+                column-gap: 10px;
+                width: 480px;
+
+
+                & > ul li {
+                    line-height: 1.5em;
+                    border-bottom: 1px solid #ccc;
+                    float: left;
+                    padding: 0 3px 0 3px;
+                    display: inline;
+                }
+            }
+        }

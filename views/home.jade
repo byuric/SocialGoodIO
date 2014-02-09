@@ -13,11 +13,6 @@ block content
       strong Success!
       |  You are logged in.
   h1 Projects
-   ul#projectList
-    for project in projects
-        li#projectListing
-            ul
-                li #{project.id}
-                li #{project.name}
-                li #{project.location}
-                li #{project.description}
+  for project in projects
+    include partials/projectTile
+

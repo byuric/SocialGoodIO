@@ -7,4 +7,4 @@ var projectMemberSchema = new mongoose.Schema({
     role: { type: String, required: true }  //refactor to have a dictionary of availabe role types? (advocate, donator, volunteer)
 });
 
-module.exports = mongoose.model('ProjectMember', projectMember);
+module.exports = mongoose.model('ProjectMember', projectMemberSchema);
