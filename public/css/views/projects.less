@@ -12,10 +12,10 @@
     float:left;
     margin:8px;
     position:relative;
+
     h3.title {
         padding:0 20px 10px 20px;
-        margin: 20px 0 10px 0;
-        height:80px;
+        margin: 20px 0 0 0;
         overflow:hidden;
         text-overflow:ellipsis;
         a {
@@ -27,34 +27,48 @@
 
     div.description {
         margin-bottom:30px; //10px when turned back on.
-        p {
+        position: relative;
 
+        p {
             color:#8a92a5;
-            height:50px;
+            height:55px;
             overflow:hidden;
-            word-wrap:break-word;
-            text-overflow:ellipsis;
-            display:none; //display:block;
             margin:0 20px 0 20px;
             background:-webkit-gradient(linear,right top,left top,from(#fff),to(rgba(255,255,255,.1)));
+        }
+
+        &:after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 35px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%,rgba(255,255,255,1) 100%);
+            z-index: 1;
         }
     }
 
     div.members{
         margin:0 20px 3px 20px;
-        
+
+        .profile{
+            margin: 0 5px 0 0;
+        }
     }
 
     div.summary {
       width:100%;
-      height:60px;
       position:absolute;
       bottom:0px;
       left:0px;
+      border-radius: 0 0 5px 5px;
 
         background-color:#fafafa;
         border-top:1px solid #e8e8e8;
-        > div{float:left;
+
+        > div{
+            display: table-cell;
             width:33.3%;
             text-align:center;
             padding:5px 3px 5px 3px;

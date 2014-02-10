@@ -46,5 +46,10 @@ block content
             if member.user
               li.members__item
                 div.memberCard
+                  - var picture = ''
+                  if member.user.picture
+                    - picture = member.user.picture
+                  else
+                    - picture = member.user.gravatar(60)
                   a.memberCard__link(href='/profile/' + member.user._id)
-                    img.memberCard__avatar(class='js-projectMember-avatar',src=member.user.picture, height='30', data-toggle='tooltip', data-placement='bottom', title='#{member.user.name}')
+                    img.memberCard__avatar(class='js-projectMember-avatar',src=picture, height='30', data-toggle='tooltip', data-placement='bottom', title='#{member.user.name}')
