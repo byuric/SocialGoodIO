@@ -15,9 +15,9 @@ for project in projects
         div.summary
             div.membercount
                 if project.members.length>0
-                    div=project.members.length + ((project.members.length>1) ? ' Members':' Lonely Member')
+                    div=project.members.length + ((project.members.length>1) ? ' Members':'Member')
                 else
-                    div='No followers yet.'
+                    div='No Members.'
             div.stats
                 div
                     //- (project.members.length*8).toFixed(2)+'%'
