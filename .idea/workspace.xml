@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4614c311-021e-4379-9b95-6d23ac7ab4b3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/projects/projects.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Project.js" afterPath="$PROJECT_DIR$/models/Project.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/project/fields.jade" afterPath="$PROJECT_DIR$/views/project/fields.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/home.jade" afterPath="$PROJECT_DIR$/views/home.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/home.js" afterPath="$PROJECT_DIR$/controllers/home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/project.js" afterPath="$PROJECT_DIR$/controllers/project.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/projects/projectList.jade" afterPath="$PROJECT_DIR$/views/projects/projectList.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/main.js" afterPath="$PROJECT_DIR$/public/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/views/project.less" afterPath="$PROJECT_DIR$/public/css/views/project.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/views/projects.less" afterPath="$PROJECT_DIR$/public/css/views/projects.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SocialGoodIO.iws" />
@@ -32,37 +28,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
+      <file leaf-file-name="projectList.jade" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/projects/projectList.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="58" selection-start="3496" selection-end="3507" vertical-scroll-proportion="0.0" vertical-offset="1448" max-vertical-offset="2715">
+            <state line="5" column="0" selection-start="75" selection-end="75" vertical-scroll-proportion="-3.0" vertical-offset="0" max-vertical-offset="165">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fields.jade" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/project/fields.jade">
+      <file leaf-file-name="projects.jade" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/projects/projects.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="94" selection-start="1636" selection-end="1644" vertical-scroll-proportion="-13.8" vertical-offset="135" max-vertical-offset="600">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="project.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/controllers/project.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="163" column="0" selection-start="5242" selection-end="5242" vertical-scroll-proportion="0.29424778" vertical-offset="2312" max-vertical-offset="3045">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit.jade" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/project/edit.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="300">
+            <state line="27" column="33" selection-start="1145" selection-end="1145" vertical-scroll-proportion="0.8565121" vertical-offset="17" max-vertical-offset="495">
               <folding />
             </state>
           </provider>
@@ -97,12 +75,12 @@
         <option value="$PROJECT_DIR$/views/project/project.jade" />
         <option value="$PROJECT_DIR$/views/partials/navigation.jade" />
         <option value="$PROJECT_DIR$/views/projects/projects.jade" />
-        <option value="$PROJECT_DIR$/views/projects/projectList.jade" />
         <option value="$PROJECT_DIR$/models/Project.js" />
         <option value="$PROJECT_DIR$/views/home.jade" />
         <option value="$PROJECT_DIR$/controllers/home.js" />
         <option value="$PROJECT_DIR$/views/project/fields.jade" />
         <option value="$PROJECT_DIR$/controllers/project.js" />
+        <option value="$PROJECT_DIR$/views/projects/projectList.jade" />
       </list>
     </option>
   </component>
@@ -351,7 +329,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32980132" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32980132" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -703,20 +681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/projects/projectList.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="4" selection-start="79" selection-end="95" vertical-scroll-proportion="0.16556291" vertical-offset="0" max-vertical-offset="453">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/projects/projects.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="33" selection-start="1145" selection-end="1145" vertical-scroll-proportion="-16.2" vertical-offset="0" max-vertical-offset="495">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/profile/profile.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="35" selection-start="1533" selection-end="1533" vertical-scroll-proportion="-23.92" vertical-offset="32" max-vertical-offset="720">
@@ -773,6 +737,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/project/fields.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="94" selection-start="1620" selection-end="1628" vertical-scroll-proportion="-13.8" vertical-offset="135" max-vertical-offset="600">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/project.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="170" column="59" selection-start="5612" selection-end="5612" vertical-scroll-proportion="5.641593" vertical-offset="0" max-vertical-offset="3180">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/project/edit.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="478">
@@ -780,16 +758,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/project/fields.jade">
+    <entry file="file://$PROJECT_DIR$/views/projects/projectList.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="94" selection-start="1636" selection-end="1644" vertical-scroll-proportion="-13.8" vertical-offset="135" max-vertical-offset="600">
+        <state line="5" column="0" selection-start="75" selection-end="75" vertical-scroll-proportion="-3.0" vertical-offset="0" max-vertical-offset="165">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/project.js">
+    <entry file="file://$PROJECT_DIR$/views/projects/projects.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="0" selection-start="5242" selection-end="5242" vertical-scroll-proportion="0.29424778" vertical-offset="2312" max-vertical-offset="3045">
+        <state line="27" column="33" selection-start="1145" selection-end="1145" vertical-scroll-proportion="0.8565121" vertical-offset="17" max-vertical-offset="495">
           <folding />
         </state>
       </provider>
