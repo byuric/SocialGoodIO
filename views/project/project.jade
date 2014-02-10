@@ -7,7 +7,7 @@ block content
     else
       if user
         if isOwner
-          a(href='/project/'+project._id+'/delete', onclick="alert('not implemented');", class='btn btn-danger pull-right') Delete Project
+          a(href='/project/' + project._id + '/destroy', class='btn btn-danger pull-right') Delete Project
           a(href='/project/' + project._id + '/edit', class='btn btn-primary pull-right') Edit
         else
           a(href='/project/'+project._id+'/join', class='btn btn-primary pull-right') Join Project
@@ -48,9 +48,9 @@ block content
               li.members__item
                 div.memberCard
                   a.memberCard__link(href='/profile/' + member.user._id)
-                      - var picture = ''
-                      if member.user.picture
-                        - picture = member.user.picture
-                      else
-                        - picture = member.user.gravatar(60)
-                      img.memberCard__avatar(src="#{picture}", class='js-projectMember profile', width='30', height='30', data-toggle='tooltip', data-placement='bottom', title='#{member.user.name}')
+                    - var picture = ''
+                    if member.user.picture
+                      - picture = member.user.picture
+                    else
+                      - picture = member.user.gravatar(60)
+                    img.memberCard__avatar(src="#{picture}", class='js-projectMember profile', width='30', height='30', data-toggle='tooltip', data-placement='bottom', title='#{member.user.name}')

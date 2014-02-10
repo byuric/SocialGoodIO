@@ -82,9 +82,15 @@ exports.leaveProject = function (req, res) {
       return console.log(error);
     }
   });
-
 }
 
+function sanitiseNumber(input) {
+  var result = 0;
+  if (input != '') {
+    result = parseInt(input);
+  }
+  return result;
+}
 
 exports.postCreateProject = function(req, res) {
   req.assert('name', 'Name cannot be blank').notEmpty();
@@ -106,8 +112,8 @@ exports.postCreateProject = function(req, res) {
     startDate: new Date(req.body.startDate),
     endDate: new Date(req.body.endDate),
     status: req.body.status,
-    totalHoursPlanned: parseInt(req.body.totalHoursPlanned),
-    totalEstimatedBudget: parseInt(req.body.totalEstimatedBudget),
+    totalHoursPlanned: sanitiseNumber(req.body.totalHoursPlanned),
+    totalEstimatedBudget: sanitiseNumber(req.body.totalEstimatedBudget),
     featured: req.body.featured,
     owner: req.user._id
   });
@@ -190,9 +196,28 @@ exports.updateProject = function(req, res) {
         req.flash('success', { msg: 'Project updated.' });
       } else {
         console.log('ProjectController: Error updating project: ' + error);
-        req.flash('error', { msg: 'Error upating project: ' + error});
+        req.flash('errors', { msg: 'Error upating project: ' + error});
       }
       return res.redirect('/project/' + project._id);
     });
   });
 };
+
+exports.destroyProject = function (req, res) {
+  return Project.findById(req.params.id, function (error, project) {
+    var isOwner = req.user._id.equals(project.owner);
+    if (isOwner) {
+      return project.remove(function (error) {
+        if (error) {
+          req.flash('errors', { msg: 'Error deleting project: ' + error});
+        } else {
+          req.flash('success', { msg: 'Project deleted.' });
+        }
+        return res.redirect('/projects');
+      });
+    } else {
+      req.flash('errors', { msg: 'You must be the owner of a project to delete it.' });
+      return res.redirect('/projects');
+    }
+  });
+}
