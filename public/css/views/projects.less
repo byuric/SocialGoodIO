@@ -18,6 +18,8 @@
         margin: 20px 0 0 0;
         overflow:hidden;
         text-overflow:ellipsis;
+        white-space: nowrap;
+
         a {
             span {
                 color:#659b36;
@@ -71,8 +73,9 @@
         border-top:1px solid #e8e8e8;
 
         > div{
-            display: table-cell;
-            width:33.3%;
+            float: left;
+            width:33.33333%;
+            height: 50px;
             text-align:center;
             padding:5px 3px 5px 3px;
         }
