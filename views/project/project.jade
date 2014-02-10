@@ -2,17 +2,16 @@ extends ../layout
 
 block content
   .page-header
-    if !userIsMember
+    if userIsMember
+      a(href='/project/'+project._id+'/leave', class='btn btn-warning pull-right') Leave Project
+    else
       if user
         if isOwner
           a(href='/project/'+project._id+'/delete', onclick="alert('not implemented');", class='btn btn-danger pull-right') Delete Project
+          a(href='/project/' + project._id + '/edit', class='btn btn-primary pull-right') Edit
         else
           a(href='/project/'+project._id+'/join', class='btn btn-primary pull-right') Join Project
-    else
-      a(href='/project/'+project._id+'/leave', class='btn btn-warning pull-right') Leave Project
-    if user
-      if user._id+"" == project.owner._id+""
-        a(href='https://maps.google.com/?q=' + project.location, target='_blank', class='btn btn-primary pull-right') Edit
+
     h3 #{project.name}
   .row
     div.col-md-2 Location:

@@ -5,7 +5,8 @@ var mongoose = require('mongoose'), ObjectId = mongoose.Schema.Types.ObjectId;
 
 exports.getNewProject = function(req, res) {
   res.render('project/new', {
-    title: 'Start a new Project'
+    title: 'Start a new Project',
+    project: new Project()
   });
 };
 
@@ -122,17 +123,20 @@ exports.postCreateProject = function(req, res) {
 exports.getProject = function(req, res) {
   return Project.findById(req.params.id).lean().populate('owner').populate('members').exec(function (error, project) {
     if (!error) {
-      console.log(project.members);
       User.populate(project, { path: 'members.user' }, function (err, data) {
         if (!err) {
+          var isOwner = false;
           var alreadyJoined = false;
-          for (var i = 0; i < project.members.length; i++) {
-            alreadyJoined = alreadyJoined ? alreadyJoined : "" + project.members[i].user._id == "" + req.user._id;
+          if (req.user) {
+            isOwner = req.user._id.equals(project.owner._id);
+            for (var i = 0; i < project.members.length; i++) {
+              alreadyJoined = alreadyJoined ? alreadyJoined : "" + project.members[i].user._id == "" + req.user._id;
+            }
           }
           return res.render('project/project', {
             title: project.name,
             project: project,
-            isOwner: req.user._id.equals(project.owner._id),
+            isOwner: isOwner,
             userIsMember: alreadyJoined
           });
         } else {
@@ -142,5 +146,46 @@ exports.getProject = function(req, res) {
     } else {
       return console.log(error);
     }
+  });
+};
+
+exports.editProject = function(req, res) {
+  return Project.findById(req.params.id).exec(function (err, project) {
+    return res.render('project/edit', {
+      title: project.name,
+      project: project
+    });
+  });
+};
+
+exports.updateProject = function(req, res) {
+  req.assert('name', 'Name cannot be blank').notEmpty();
+  req.assert('description', 'Description cannot be blank').notEmpty();
+  req.assert('location', 'Location cannot be blank').notEmpty();
+
+  var errors = req.validationErrors();
+  if (errors) {
+    req.flash('errors', errors);
+    return res.redirect('/project/' + project._id + '/edit');
+  }
+
+  return Project.findById(req.params.id, function (error, project) {
+    project.title = req.body.name;
+    project.description = req.body.description;
+    project.location = req.body.location;
+    project.startDate = new Date(req.body.startDate);
+    project.endDate = new Date(req.body.endDate);
+    project.totalHoursPlanned = parseInt(req.body.totalHoursPlanned);
+    project.totalEstimatedBudget = parseInt(req.body.totalEstimatedBudget);
+    return project.save(function (error) {
+      if (!error) {
+        console.log('ProjectController: Updated ' + project._id);
+        req.flash('success', { msg: 'Project updated.' });
+      } else {
+        console.log('ProjectController: Error updating project: ' + error);
+        req.flash('error', { msg: 'Error upating project: ' + error});
+      }
+      return res.redirect('/project/' + project._id);
+    });
   });
 };

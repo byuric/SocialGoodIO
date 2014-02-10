@@ -1,5 +1,5 @@
 /**
- * Module dependencies.   
+ * Module dependencies.
  */
 
 var express = require('express');
@@ -119,6 +119,8 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 app.get('/project/new',passportConf.isAuthenticated, projectController.getNewProject);
 app.post('/project', projectController.postCreateProject);
 app.get('/project/:id', projectController.getProject);
+app.get('/project/:id/edit', projectController.editProject);
+app.put('/project/:id', projectController.updateProject);
 app.get('/project/:id/join', projectController.joinProject)
 app.get('/project/:id/leave', projectController.leaveProject)
 
@@ -171,5 +173,3 @@ app.get('/api/twitter', passportConf.isAuthenticated, passportConf.isAuthorized,
 app.listen(app.get('port'), function() {
   console.log("✔ Express server listening on port %d in %s mode", app.get('port'), app.settings.env);
 });
-
-

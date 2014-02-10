@@ -2,13 +2,14 @@ extends ../layout
 
 block content
   .page-header
-    h3 New Project
+    h3 Edit Project
 
-    form.form-horizontal(id='new-project', method='POST', action='/project')
+    form.form-horizontal(id='edit-project', method='POST', action='/project/#{project._id}')
+      input(type='hidden' name='_method' value='PUT')
       input(type='hidden', name='_csrf', value=token)
       include fields
       .form-group
         .col-sm-offset-2.col-sm-8
           button.btn.btn-success(type='submit')
             i.fa.fa-check
-              | Create
+              | Update

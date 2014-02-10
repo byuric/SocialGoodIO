@@ -1,0 +1,29 @@
+.form-group
+    label(class='col-sm-2 control-label', for='name') Name
+    .col-sm-8
+        input.form-control(type='text', name='name', id='name', value=project.name)
+.form-group
+    label(class='col-sm-2 control-label', for='description') Description
+    .col-sm-8
+        textarea.form-control(type='text', name='description', id='description', rows='5')
+            = project.description
+.form-group
+    label(class='col-sm-2 control-label', for='location') Location
+    .col-sm-8
+        input.form-control(type='name', name='location', id='location', value=project.location)
+.form-group
+    label(class='col-sm-2 control-label', for='startDate') Start date
+    .col-sm-2
+        input.form-control(type='date', name='startDate', id='startDate', value=project.startDate)
+.form-group
+    label(class='col-sm-2 control-label', for='endDate') End date
+    .col-sm-2
+        input.form-control(type='date', name='endDate', id='endDate', value=project.endDate)
+.form-group
+    label(class='col-sm-2 control-label', for='totalHoursPlanned') Total hours planned
+    .col-sm-8
+        input.form-control(type='text', name='totalHoursPlanned', id='totalHoursPlanned', value=project.totalHoursPlanned)
+.form-group
+    label(class='col-sm-2 control-label', for='totalEstimatedBudget') Total estimated budget
+    .col-sm-8
+        input.form-control(type='text', name='totalEstimatedBudget', id='totalEstimatedBudget', value=project.totalEstimatedBudget)
