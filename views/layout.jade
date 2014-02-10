@@ -8,7 +8,9 @@ html
     meta(name='author', content='')
     title #{title} - SocialGood.io
     != css('styles')
+    script(src='https://checkout.stripe.com/checkout.js')
     != js('application')
+
   body
     #wrap
       include partials/navigation

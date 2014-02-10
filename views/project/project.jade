@@ -31,6 +31,18 @@ block content
   .row
       div.col-md-2 Total esdtimated budget:
       div.col-md-10 #{project.totalEstimatedBudget}
+  br
+  select(id='donationAmount',
+  class='form-control pull-left',
+  style='width:230px; margin-right:10px;')
+    option(value='') Select Donation Amount
+    option(value='5') $5.00
+    option(value='10') $10.00
+    option(value='20') $20.00
+    option(value='50') $50.00
+  a(href='#',
+   class='btn btn-primary ',
+   onclick="document.helpers.checkout('Social Good I Owe','"+project.name+"',$('#donationAmount').val(),'"+user.email+"');") Donate to this project.
 
   hr
 
