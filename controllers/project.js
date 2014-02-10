@@ -154,11 +154,20 @@ exports.getProject = function(req, res) {
   });
 };
 
+function mongooseDateToFormattedDate(mongooseDate) {
+  var date = new Date(mongooseDate);
+  var day = ('0' + date.getDate()).slice(-2);
+  var month = ('0' + (date.getMonth() + 1)).slice(-2);
+  return date.getFullYear() + '-' + (month) + '-' + (day);
+}
+
 exports.editProject = function(req, res) {
   return Project.findById(req.params.id).exec(function (err, project) {
     return res.render('project/edit', {
       title: project.name,
-      project: project
+      project: project,
+      startDate: mongooseDateToFormattedDate(project.startDate),
+      endDate: mongooseDateToFormattedDate(project.endDate),
     });
   });
 };
