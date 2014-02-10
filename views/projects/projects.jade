@@ -9,7 +9,12 @@ for project in projects
             if project.members.length>0 && project.members[0].user != null
                 each val in [0, 1, 2, 3, 4, 5]
                     if(project.members[val])
-                        img(src="#{project.members[val].user.picture}", class='profile', width='30', height='30')
+                          - var picture = ''
+                          if project.members[val].user.picture
+                            - picture = project.members[val].user.picture
+                          else
+                            - picture = project.members[val].user.gravatar(60)
+                          img(src="#{picture}", class='js-projectMember profile', width='30', height='30', data-toggle='tooltip', data-placement='bottom', title='#{project.members[val].user.name}')
                 if project.members.length>6
                     |...
         div.summary

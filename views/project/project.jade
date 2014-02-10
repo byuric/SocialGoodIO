@@ -44,7 +44,13 @@ block content
         if project.members.length>0 && project.members[0].user != null
           for member in project.members
             if member.user
+
               li.members__item
                 div.memberCard
                   a.memberCard__link(href='/profile/' + member.user._id)
-                    img.memberCard__avatar(class='js-projectMember-avatar',src=member.user.picture, height='30', data-toggle='tooltip', data-placement='bottom', title='#{member.user.name}')
+                      - var picture = ''
+                      if member.user.picture
+                        - picture = member.user.picture
+                      else
+                        - picture = member.user.gravatar(60)
+                      img.memberCard__avatar(src="#{picture}", class='js-projectMember profile', width='30', height='30', data-toggle='tooltip', data-placement='bottom', title='#{member.user.name}')
