@@ -11,7 +11,7 @@ exports.getProfile = function(req, res) {
                 User.populate(user, { path: 'projects.project.members.user' }, function (err, users) {
                     return res.render('profile/profile', {
                         title: users.name,
-                        user: users,
+                        profileUser: users,
                         projects: users.projects
                     });
                 });

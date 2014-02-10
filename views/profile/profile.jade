@@ -5,11 +5,11 @@ block content
     //a(href='#', class='btn btn-primary pull-right') Edit
 
     div.profile
-        img(src='#{user.picture}', height='50px')
+        img(src='#{profileUser.picture}', height='50px')
         h4.name
-            span #{user.name}
+            span #{profileUser.name}
         div.location='Location'
-            p #{user.country}
+            p #{profileUser.country}
         hr
 
     h1 Projects
@@ -21,10 +21,10 @@ block content
           div.description
               p=p.project.description
           div.members
-              if p.project.members.length>0 && p.project.members[0].user != null
+              if p.project.members.length>0 && p.project.members[0].profileUser != null
                   each val in [0, 1, 2, 3, 4, 5]
                       if(p.project.members[val])
-                          img(src="#{p.project.members[val].user.picture}", class='profile', width='30', height='30')
+                          img(src="#{p.project.members[val].profileUser.picture}", class='profile', width='30', height='30')
                   if p.project.members.length>6
                       |...
           div.summary
