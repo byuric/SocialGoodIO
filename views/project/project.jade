@@ -31,14 +31,20 @@ block content
   .row
       div.col-md-2 Total esdtimated budget:
       div.col-md-10 #{project.totalEstimatedBudget}
+
   hr
+
   div.members
     h3="Current Members"
-    if project.members.length>0 && project.members[0].user != null
       ul.members__list
-        for member in project.members
-          if member.user
-            li.members__item
-              div.memberCard
-                a.memberCard__link(href='#')
-                  img.memberCard__avatar(class='js-projectMember-avatar',src=member.user.picture, height='30', data-toggle='tooltip', data-placement='bottom', title='#{member.user.name}')
+        li.members__item
+          div.memberCard
+            a.memberCard__link(href='/profile/' + project.owner._id)
+              img.memberCard__avatar(class='js-projectMember-avatar',src=project.owner.picture, height='30', data-toggle='tooltip', data-placement='bottom', title='#{project.owner.name}')
+        if project.members.length>0 && project.members[0].user != null
+          for member in project.members
+            if member.user
+              li.members__item
+                div.memberCard
+                  a.memberCard__link(href='/profile/' + member.user._id)
+                    img.memberCard__avatar(class='js-projectMember-avatar',src=member.user.picture, height='30', data-toggle='tooltip', data-placement='bottom', title='#{member.user.name}')
