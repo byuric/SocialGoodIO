@@ -9,19 +9,23 @@ exports.getNewProject = function(req, res) {
     project: new Project()
   });
 };
-
 exports.joinProject = function (req, res) {
+
   Project.findById(req.params.id).populate('members').exec(function (err, project) {
     if (!err) {
       User.populate(project, { path: 'members.user' }, function (err, data) {
         if (!err) {
-          var alreadyJoined = false;
+          var userIsMember = false;
           for (var i = 0; i < project.members.length; i++) {
-            alreadyJoined = alreadyJoined ? alreadyJoined : "" + project.members[i].user._id == "" + req.user._id;
+            userIsMember = userIsMember ? userIsMember : "" + project.members[i].user._id == "" + req.user._id;
           }
-          if (!alreadyJoined) {
-            var projectMember = new ProjectMember({ user: req.user.id, role: 'Follower' });
+          if (!userIsMember) {
+            var projectMember = new ProjectMember({ user: req.user.id, project:req.params.id,  role: 'Follower' });
             projectMember.save();
+            req.user.projects.push(projectMember);
+            req.user.save(function (err) {
+                if (err) return handleError(err);
+            });
 
             project.members.push(projectMember);
             project.save(function (err) {
@@ -46,7 +50,6 @@ exports.joinProject = function (req, res) {
     }
   });
 }
-
 exports.leaveProject = function (req, res) {
   return Project.findById(req.params.id).populate('members').exec(function (error, project) {
     if (!error) {
@@ -79,7 +82,9 @@ exports.leaveProject = function (req, res) {
       return console.log(error);
     }
   });
+
 }
+
 
 exports.postCreateProject = function(req, res) {
   req.assert('name', 'Name cannot be blank').notEmpty();
@@ -126,18 +131,18 @@ exports.getProject = function(req, res) {
       User.populate(project, { path: 'members.user' }, function (err, data) {
         if (!err) {
           var isOwner = false;
-          var alreadyJoined = false;
+          var userIsMember = false;
           if (req.user) {
             isOwner = req.user._id.equals(project.owner._id);
             for (var i = 0; i < project.members.length; i++) {
-              alreadyJoined = alreadyJoined ? alreadyJoined : "" + project.members[i].user._id == "" + req.user._id;
+              userIsMember = userIsMember ? userIsMember : "" + project.members[i].user._id == "" + req.user._id;
             }
           }
           return res.render('project/project', {
             title: project.name,
             project: project,
             isOwner: isOwner,
-            userIsMember: alreadyJoined
+            userIsMember: userIsMember
           });
         } else {
           console.log(err);

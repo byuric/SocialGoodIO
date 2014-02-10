@@ -18,7 +18,7 @@ var userSchema = new mongoose.Schema({
     twitter: { type: String, unique: true, sparse: true },
     google: { type: String, unique: true, sparse: true },
     tokens: Array,
-    projects: {type: ObjectId, ref:'ProjectMember'}
+    projects: [{type: ObjectId, ref:'ProjectMember'}]
 });
 
 /**
