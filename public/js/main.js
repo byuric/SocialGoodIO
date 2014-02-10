@@ -10,10 +10,15 @@ $(document).ready(function() {
       image: '/img/logo.png',
       token: function (token, args) {
         console.log(token);
+        var dp = $('form.donationProcesser');
+        $('input[name=token]', dp).val(JSON.stringify(token));
+        dp.submit();
         // Use the token to create the charge with a server-side script.
       }
     });
     var checkout = function (name, desc, amt, emailAddress) {
+      var dp = $('form.donationProcesser');
+      $('input[name=amount]', dp).val(amt);
 
       // Open Checkout with further options
       handler.open({
