@@ -6,6 +6,7 @@ var projectSchema = new mongoose.Schema({
     creationDate: { type: Date, required: false },
     startDate: { type: Date, required: false },
     endDate: { type: Date, required: false },
+    featured: { type: Boolean, default: false },
     status: { type: String, default: 'New' }, //options: New, In Progress, Completed
     totalHoursPlanned: { type: Number },
     totalEstimatedBudget: { type: Number }, //refactor for multi-currency?

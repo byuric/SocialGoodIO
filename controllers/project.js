@@ -106,8 +106,9 @@ exports.postCreateProject = function(req, res) {
     startDate: new Date(req.body.startDate),
     endDate: new Date(req.body.endDate),
     status: req.body.status,
-    totalHoursPlanned: req.body.totalHoursPlanned,
-    totalEstimatedBudget: req.body.totalEstimatedBudget,
+    totalHoursPlanned: parseInt(req.body.totalHoursPlanned),
+    totalEstimatedBudget: parseInt(req.body.totalEstimatedBudget),
+    featured: req.body.featured,
     owner: req.user._id
   });
 
@@ -182,6 +183,7 @@ exports.updateProject = function(req, res) {
     project.endDate = new Date(req.body.endDate);
     project.totalHoursPlanned = parseInt(req.body.totalHoursPlanned);
     project.totalEstimatedBudget = parseInt(req.body.totalEstimatedBudget);
+    project.featured = req.body.featured;
     return project.save(function (error) {
       if (!error) {
         console.log('ProjectController: Updated ' + project._id);
