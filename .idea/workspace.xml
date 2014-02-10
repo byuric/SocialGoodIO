@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4614c311-021e-4379-9b95-6d23ac7ab4b3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/main.js" afterPath="$PROJECT_DIR$/public/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/views/project.less" afterPath="$PROJECT_DIR$/public/css/views/project.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/views/projects.less" afterPath="$PROJECT_DIR$/public/css/views/projects.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/projects/projects.jade" afterPath="$PROJECT_DIR$/views/projects/projects.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SocialGoodIO.iws" />
@@ -40,7 +38,7 @@
       <file leaf-file-name="projects.jade" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/projects/projects.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="33" selection-start="1145" selection-end="1145" vertical-scroll-proportion="0.8565121" vertical-offset="17" max-vertical-offset="495">
+            <state line="19" column="35" selection-start="815" selection-end="815" vertical-scroll-proportion="0.62913907" vertical-offset="0" max-vertical-offset="495">
               <folding />
             </state>
           </provider>
@@ -74,13 +72,13 @@
         <option value="$PROJECT_DIR$/public/js/main.js" />
         <option value="$PROJECT_DIR$/views/project/project.jade" />
         <option value="$PROJECT_DIR$/views/partials/navigation.jade" />
-        <option value="$PROJECT_DIR$/views/projects/projects.jade" />
         <option value="$PROJECT_DIR$/models/Project.js" />
         <option value="$PROJECT_DIR$/views/home.jade" />
-        <option value="$PROJECT_DIR$/controllers/home.js" />
         <option value="$PROJECT_DIR$/views/project/fields.jade" />
         <option value="$PROJECT_DIR$/controllers/project.js" />
         <option value="$PROJECT_DIR$/views/projects/projectList.jade" />
+        <option value="$PROJECT_DIR$/controllers/home.js" />
+        <option value="$PROJECT_DIR$/views/projects/projects.jade" />
       </list>
     </option>
   </component>
@@ -688,44 +686,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/home.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="2" selection-start="447" selection-end="447" vertical-scroll-proportion="-5.4" vertical-offset="0" max-vertical-offset="270">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="49" selection-start="201" selection-end="201" vertical-scroll-proportion="0.25104603" vertical-offset="0" max-vertical-offset="478">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/project/new.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="17" selection-start="237" selection-end="237" vertical-scroll-proportion="0.29801324" vertical-offset="0" max-vertical-offset="453">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/projects.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="5" selection-start="218" selection-end="651" vertical-scroll-proportion="0.68619245" vertical-offset="77" max-vertical-offset="600">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/project/project.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="189" selection-start="2058" selection-end="2058" vertical-scroll-proportion="0.9886364" vertical-offset="300" max-vertical-offset="825">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/Project.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="12" selection-start="404" selection-end="412" vertical-scroll-proportion="0.25104603" vertical-offset="0" max-vertical-offset="540">
           <folding />
         </state>
       </provider>
@@ -737,23 +700,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/project/edit.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="478">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/project/fields.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="94" selection-start="1620" selection-end="1628" vertical-scroll-proportion="-13.8" vertical-offset="135" max-vertical-offset="600">
+        <state line="32" column="94" selection-start="1620" selection-end="1628" vertical-scroll-proportion="0.79028696" vertical-offset="122" max-vertical-offset="600">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/project/new.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="17" selection-start="237" selection-end="237" vertical-scroll-proportion="-5.4" vertical-offset="0" max-vertical-offset="285">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/project/project.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="189" selection-start="2058" selection-end="2058" vertical-scroll-proportion="0.79545456" vertical-offset="385" max-vertical-offset="825">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="49" selection-start="197" selection-end="201" vertical-scroll-proportion="0.25104603" vertical-offset="0" max-vertical-offset="478">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/project.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="170" column="59" selection-start="5612" selection-end="5612" vertical-scroll-proportion="5.641593" vertical-offset="0" max-vertical-offset="3180">
+        <state line="164" column="2" selection-start="5250" selection-end="5250" vertical-scroll-proportion="2.412134" vertical-offset="1307" max-vertical-offset="3045">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/project/edit.jade">
+    <entry file="file://$PROJECT_DIR$/views/home.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="478">
+        <state line="9" column="2" selection-start="447" selection-end="447" vertical-scroll-proportion="0.3068182" vertical-offset="0" max-vertical-offset="440">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Project.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="12" selection-start="404" selection-end="412" vertical-scroll-proportion="0.25104603" vertical-offset="0" max-vertical-offset="540">
           <folding />
         </state>
       </provider>
@@ -767,7 +765,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/projects/projects.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="33" selection-start="1145" selection-end="1145" vertical-scroll-proportion="0.8565121" vertical-offset="17" max-vertical-offset="495">
+        <state line="19" column="35" selection-start="815" selection-end="815" vertical-scroll-proportion="0.62913907" vertical-offset="0" max-vertical-offset="495">
           <folding />
         </state>
       </provider>
