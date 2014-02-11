@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4614c311-021e-4379-9b95-6d23ac7ab4b3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/project/project.jade" afterPath="$PROJECT_DIR$/views/project/project.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/project.js" afterPath="$PROJECT_DIR$/controllers/project.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SocialGoodIO.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +29,7 @@
       <file leaf-file-name="project.jade" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/project/project.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="38" selection-start="3240" selection-end="3240" vertical-scroll-proportion="0.72727275" vertical-offset="850" max-vertical-offset="1290">
+            <state line="23" column="30" selection-start="812" selection-end="812" vertical-scroll-proportion="0.5113636" vertical-offset="120" max-vertical-offset="1260">
               <folding />
             </state>
           </provider>
@@ -774,7 +774,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/project/project.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="38" selection-start="3240" selection-end="3240" vertical-scroll-proportion="0.72727275" vertical-offset="850" max-vertical-offset="1290">
+        <state line="23" column="30" selection-start="812" selection-end="812" vertical-scroll-proportion="0.5113636" vertical-offset="120" max-vertical-offset="1260">
           <folding />
         </state>
       </provider>

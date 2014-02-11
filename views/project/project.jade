@@ -13,17 +13,15 @@ block content
           a(href='/project/'+project._id+'/join', class='btn btn-primary pull-right') Join Project
     h3 #{project.name}
   .row
-    div.col-md-2 Location:
-    div.col-md-10
-      a(href='https://maps.google.com/?q=' + project.location, target='_blank') #{project.location}
-  .row
     div.col-md-2 Description:
     div.col-md-10 #{project.description}
   .row
     div.col-md-2 Location:
-    div.col-md-10 #{project.location}
+    div.col-md-10
+      a(href='https://maps.google.com/?q=' + project.location, target='_blank') #{project.location}
+
   .row
-    div.col-md-2 Duration(Start date - End date):
+    div.col-md-2 Start date - End date:
     div.col-md-10 #{project.startDate.toDateString()} - #{project.endDate.toDateString()}
   .row
     div.col-md-2 Total hours planned:
@@ -51,7 +49,7 @@ block content
   hr
 
   div.members
-    h3="Current Members"
+    h4="Current Members"
       ul.members__list
         li.members__item
           div.memberCard
