@@ -20,14 +20,12 @@ for project in projects
         div.summary
             div.membercount
                 if project.members.length>0
-                    div=project.members.length + ((project.members.length>1) ? ' Members':'Member')
+                    div=project.members.length + ((project.members.length>1) ? ' Members':' Member')
                 else
                     div='No Members.'
-            div.stats
-                div
-                    //- (project.members.length*8).toFixed(2)+'%'
-                div
-                    //- 'Funded'
+            div.stats 
+              div=parseInt(100*parseInt(project.totalDonations)/project.totalEstimatedBudget) + "% Funded" 
+                   
             div.value
                 div='$'+(project.totalEstimatedBudget?project.totalEstimatedBudget:0).toFixed(2)
                 div='Total Value'

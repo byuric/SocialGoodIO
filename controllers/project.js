@@ -63,15 +63,17 @@ exports.leaveProject = function (req, res) {
               break;
             }
           }
-          //delete it from the db
-          ProjectMember.findById(project.members[pmIndex]._id).remove();
+          if(pmIndex >= 0){
+            //delete it from the db
+            ProjectMember.remove({ id: project.members[pmIndex]._id });
 
-          //pop it from the array
-          project.members.splice(pmIndex,1);
-
+            //pop it from the array
+            project.members.splice(pmIndex,1);
+          }
           //save the project
           project.save(function(err){
-            if(!err) return res.redirect('/project/' + project.id);
+            req.flash('success', 'Removed from the project');
+            if (!err) return res.redirect('/project/' + project.id);
             else return console.log(err);
           });
         }
@@ -182,7 +184,7 @@ exports.donateToProject = function (req, res) {
     projectMember.role = "Donator";
     if(!projectMember.donations){projectMember.donations = [];}
     //projectMember.donations.push({ date: (new Date()).getDate(), amount: req.body.amount });
-    projectMember.totalDonation += req.body.amount;
+    projectMember.totalDonation += parseInt(req.body.amount);
     projectMember.save(function (err) {
       if (!err) {
         req.flash('success', { msg: 'Donation recieved. Thank you for supporting a worthy cause!!' });
