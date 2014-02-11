@@ -72,9 +72,9 @@ block content
                     img.memberCard__avatar(src="#{picture}", class='js-projectMember profile', width='30', height='30', data-toggle='tooltip', data-placement='bottom', title='#{member.user.name}')
   
   if isOwner
-    a(href='/project/'+project._id+'/join', class='btn btn-primary pull-right') ~ super secret join link
+    a(style ='display: none', href='/project/'+project._id+'/join', class='btn btn-primary pull-right') ~ super secret join link
 
   form.donationProcesser(action='/project/' + project._id + '/donate',method='post')
-    input(name='token')  
-    input(name='amount')
+    input(type="hidden", name='token')
+    input(type="hidden", name='amount')
     input(type="hidden", name="_csrf", value=token)
