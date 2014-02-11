@@ -30,10 +30,10 @@ block content
     div.col-md-10 #{project.totalHoursPlanned}
   .row
       div.col-md-2 Total estimated budget:
-      div.col-md-10 #{project.totalEstimatedBudget}
+      div.col-md-10='$'+(project.totalEstimatedBudget?project.totalEstimatedBudget:0).toFixed(2)
   .row
       div.col-md-2 Total donated:
-      div.col-md-10 #{totalDonations}
+      div.col-md-10='$'+(totalDonations?totalDonations:0).toFixed(2)
   br
   if (user)
       select(id='donationAmount',
@@ -75,6 +75,6 @@ block content
     a(href='/project/'+project._id+'/join', class='btn btn-primary pull-right') ~ super secret join link
 
   form.donationProcesser(action='/project/' + project._id + '/donate',method='post')
-    input(name='token')  
-    input(name='amount')
+    input(name='token',type='hidden')  
+    input(name='amount',type='hidden')
     input(type="hidden", name="_csrf", value=token)
