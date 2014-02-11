@@ -33,7 +33,7 @@ block content
       div.col-md-2 Total donated:
       div.col-md-10='$'+(totalDonations?totalDonations:0).toFixed(2)
   br
-  if (user)
+  if (userIsMember)
       select(id='donationAmount',
       class='form-control pull-left',
       style='width:230px; margin-right:10px;')

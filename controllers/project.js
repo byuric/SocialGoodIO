@@ -64,18 +64,25 @@ exports.leaveProject = function (req, res) {
             }
           }
           if(pmIndex >= 0){
-            //delete it from the db
-            ProjectMember.remove({ id: project.members[pmIndex]._id });
 
-            //pop it from the array
-            project.members.splice(pmIndex,1);
+            ProjectMember.findOne({ _id: project.members[pmIndex].id }).exec(function (err, obj) {
+              if (err) console.log(err);
+
+              //delete it from the db
+              obj.remove();
+
+              //pop it from the array
+              project.members.splice(pmIndex, 1);
+
+              //save the project
+              project.save(function (err) {
+                req.flash('success', 'Removed from the project');
+                if (!err) return res.redirect('/project/' + project.id);
+                else return console.log(err);
+              });
+
+            });;
           }
-          //save the project
-          project.save(function(err){
-            req.flash('success', 'Removed from the project');
-            if (!err) return res.redirect('/project/' + project.id);
-            else return console.log(err);
-          });
         }
         else { console.log(err) }
       });
