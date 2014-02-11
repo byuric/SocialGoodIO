@@ -145,11 +145,17 @@ exports.getProject = function(req, res) {
               userIsMember = userIsMember ? userIsMember : "" + project.members[i].user._id == "" + req.user._id;
             }
           }
+          var totalDontations = 0;
+
+          for (var i = 0; i < project.members.length; i++) {
+            totalDontations += (project.members[i].totalDonation) ? project.members[i].totalDonation : 0;
+          }
           return res.render('project/project', {
             title: project.name,
             project: project,
             isOwner: isOwner,
-            userIsMember: userIsMember
+            userIsMember: userIsMember,
+            totalDonations:totalDontations
           });
         } else {
           console.log(err);
@@ -167,6 +173,20 @@ exports.editProject = function(req, res) {
       title: project.name,
       project: project
     });
+  });
+};
+
+exports.donateToProject = function (req, res) {
+  console.log(req.body.token);
+  var token = JSON.parse(req.body.token);
+  return ProjectMember.find({user:req.user._id, project:req.params.id}).exec(function (err, projectMember) {
+    
+    projectMember.role = "Donator";
+    if(!projectMember.donations){projectMember.donations = [];}
+    //projectMember.donations.push({ date: (new Date()).getDate(), amount: req.body.amount });
+    projectMember.totalDonation += req.body.amount;
+    req.flash('success', { msg: 'Donation recieved. Thank you for supporting a worthy cause!!' });
+    return res.redirect('/project/' + req.params.id);
   });
 };
 

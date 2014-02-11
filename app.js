@@ -124,6 +124,7 @@ app.put('/project/:id', projectController.updateProject);
 app.get('/project/:id/destroy', projectController.destroyProject);
 app.get('/project/:id/join', projectController.joinProject)
 app.get('/project/:id/leave', projectController.leaveProject)
+app.post('/project/:id/donate', projectController.donateToProject)
 
 /**
  * Projects

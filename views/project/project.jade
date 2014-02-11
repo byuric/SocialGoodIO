@@ -29,8 +29,11 @@ block content
     div.col-md-2 Total hours planned:
     div.col-md-10 #{project.totalHoursPlanned}
   .row
-      div.col-md-2 Total esdtimated budget:
+      div.col-md-2 Total estimated budget:
       div.col-md-10 #{project.totalEstimatedBudget}
+  .row
+      div.col-md-2 Total donated:
+      div.col-md-10 #{totalDonations}
   br
   if (user)
       select(id='donationAmount',
@@ -67,3 +70,11 @@ block content
                     else
                       - picture = member.user.gravatar(60)
                     img.memberCard__avatar(src="#{picture}", class='js-projectMember profile', width='30', height='30', data-toggle='tooltip', data-placement='bottom', title='#{member.user.name}')
+  
+  if isOwner
+    a(href='/project/'+project._id+'/join', class='btn btn-primary pull-right') ~ super secret join link
+
+  form.donationProcesser(action='/project/' + project._id + '/donate',method='post')
+    input(name='token')  
+    input(name='amount')
+    input(type="hidden", name="_csrf", value=token)
