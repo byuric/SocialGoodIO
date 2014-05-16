@@ -4,8 +4,8 @@ var projectSchema = new mongoose.Schema({
     description: { type: String, default: '' },
     location: { type: String, default: '' },
     creationDate: { type: Date, required: false },
-    startDate: { type: Date, required: false },
-    endDate: { type: Date, required: false },
+    startDate: { type: Date, required: true },
+    endDate: { type: Date, required: true},
     featured: { type: Boolean, default: false },
     status: { type: String, default: 'New' }, //options: New, In Progress, Completed
     totalHoursPlanned: { type: Number },
